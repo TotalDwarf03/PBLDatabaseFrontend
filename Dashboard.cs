@@ -1,8 +1,8 @@
 namespace PBLDatabaseFrontend
 {
-    public partial class Form1 : Form
+    public partial class Dashboard : Form
     {
-        public Form1()
+        public Dashboard()
         {
             InitializeComponent();
         }
