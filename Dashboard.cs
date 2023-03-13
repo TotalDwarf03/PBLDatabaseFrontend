@@ -13,12 +13,6 @@ namespace PBLDatabaseFrontend
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            string query = 
-                    "SELECT fname " +
-                    "FROM author";
-
-            DataTable queryResults = controller.executeSQL(query);
-
             
         }
     }
