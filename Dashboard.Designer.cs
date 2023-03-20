@@ -66,6 +66,8 @@
             // 
             this.btnSearch.BackColor = System.Drawing.SystemColors.Control;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSearch.Image = global::PBLDatabaseFrontend.Properties.Resources.SearchIcon;
+            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSearch.Location = new System.Drawing.Point(7, 153);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(220, 58);
@@ -78,6 +80,8 @@
             // 
             this.btnInsNewRecord.BackColor = System.Drawing.SystemColors.Control;
             this.btnInsNewRecord.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnInsNewRecord.Image = global::PBLDatabaseFrontend.Properties.Resources.NewRecordIcon;
+            this.btnInsNewRecord.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInsNewRecord.Location = new System.Drawing.Point(7, 8);
             this.btnInsNewRecord.Name = "btnInsNewRecord";
             this.btnInsNewRecord.Size = new System.Drawing.Size(220, 58);
@@ -90,6 +94,8 @@
             // 
             this.btnVMTables.BackColor = System.Drawing.SystemColors.Control;
             this.btnVMTables.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnVMTables.Image = global::PBLDatabaseFrontend.Properties.Resources.View_ModifyIcon;
+            this.btnVMTables.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVMTables.Location = new System.Drawing.Point(7, 80);
             this.btnVMTables.Name = "btnVMTables";
             this.btnVMTables.Size = new System.Drawing.Size(220, 58);

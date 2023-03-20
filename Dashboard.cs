@@ -12,6 +12,11 @@ namespace PBLDatabaseFrontend
 
         SQLController controller = new SQLController();
 
+        /// <summary>
+        /// Populates a given listview using a given data table
+        /// </summary>
+        /// <param name="listView">The listview to be populated</param>
+        /// <param name="dt">The data to be put into the listview</param>
         private void GenerateListview(ListView listView, DataTable dt)
         {
             foreach (DataColumn col in dt.Columns)

@@ -81,12 +81,42 @@ namespace PBLDatabaseFrontend.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NewRecordIcon {
+            get {
+                object obj = ResourceManager.GetObject("NewRecordIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] pontybrynlibrary {
             get {
                 object obj = ResourceManager.GetObject("pontybrynlibrary", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SearchIcon {
+            get {
+                object obj = ResourceManager.GetObject("SearchIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap View_ModifyIcon {
+            get {
+                object obj = ResourceManager.GetObject("View-ModifyIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
