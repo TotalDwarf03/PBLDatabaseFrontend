@@ -63,6 +63,46 @@ namespace PBLDatabaseFrontend.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AuthorIcon {
+            get {
+                object obj = ResourceManager.GetObject("AuthorIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bookIcon {
+            get {
+                object obj = ResourceManager.GetObject("bookIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap catagoryIcon {
+            get {
+                object obj = ResourceManager.GetObject("catagoryIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LoanIcon {
+            get {
+                object obj = ResourceManager.GetObject("LoanIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);
@@ -76,6 +116,16 @@ namespace PBLDatabaseFrontend.Properties {
         internal static System.Drawing.Bitmap LogoNT {
             get {
                 object obj = ResourceManager.GetObject("LogoNT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap memberIcon {
+            get {
+                object obj = ResourceManager.GetObject("memberIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
