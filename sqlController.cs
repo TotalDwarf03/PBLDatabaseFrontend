@@ -15,10 +15,10 @@ namespace PBLDatabaseFrontend
         SQLiteConnection conn = new SQLiteConnection(@"Data Source=Resources\\pontybrynlibrary.db");
 
         /// <summary>
-        /// 
+        /// Executes Select Statements
         /// </summary>
-        /// <param name="query"></param>
-        /// <returns></returns>
+        /// <param name="query">The query you want to run</param>
+        /// <returns>A data table containing the query results</returns>
         public DataTable RunQuery(string query)
         {
             SQLiteDataAdapter adapter;
@@ -44,11 +44,11 @@ namespace PBLDatabaseFrontend
         }
 
         /// <summary>
-        /// 
+        /// Execute Table functions such as Update or Insert
         /// </summary>
-        /// <param name="nonQuery"></param>
-        /// <param name="parameterMap"></param>
-        /// <returns></returns>
+        /// <param name="nonQuery">The table function statement (i.e update)</param>
+        /// <param name="parameterMap">The list of parameters using the customer ParameterMap data class</param>
+        /// <returns>The number of records changed</returns>
         public int RunNonQuery(string nonQuery, List<ParameterMap> parameterMap)
         {
             int recordsChanged = 0;
