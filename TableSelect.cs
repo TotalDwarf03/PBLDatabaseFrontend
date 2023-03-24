@@ -16,5 +16,10 @@ namespace PBLDatabaseFrontend
         {
             InitializeComponent();
         }
+
+        private void TableSelect_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Show();
+        }
     }
 }

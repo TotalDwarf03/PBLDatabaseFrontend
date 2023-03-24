@@ -28,118 +28,121 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblHeading = new System.Windows.Forms.Label();
-            this.btnAuthor = new System.Windows.Forms.Button();
-            this.btnBook = new System.Windows.Forms.Button();
-            this.btnCatagory = new System.Windows.Forms.Button();
-            this.btnLoan = new System.Windows.Forms.Button();
-            this.btnMember = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableSelect));
+            lblHeading = new Label();
+            btnAuthor = new Button();
+            btnBook = new Button();
+            btnCatagory = new Button();
+            btnLoan = new Button();
+            btnMember = new Button();
+            SuspendLayout();
             // 
             // lblHeading
             // 
-            this.lblHeading.BackColor = System.Drawing.SystemColors.Window;
-            this.lblHeading.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblHeading.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblHeading.Location = new System.Drawing.Point(249, 9);
-            this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(262, 40);
-            this.lblHeading.TabIndex = 0;
-            this.lblHeading.Text = "Please Select a Table...";
-            this.lblHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblHeading.BackColor = SystemColors.Window;
+            lblHeading.BorderStyle = BorderStyle.FixedSingle;
+            lblHeading.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblHeading.Location = new Point(249, 9);
+            lblHeading.Name = "lblHeading";
+            lblHeading.Size = new Size(262, 40);
+            lblHeading.TabIndex = 0;
+            lblHeading.Text = "Please Select a Table...";
+            lblHeading.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnAuthor
             // 
-            this.btnAuthor.BackColor = System.Drawing.SystemColors.Window;
-            this.btnAuthor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAuthor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAuthor.Image = global::PBLDatabaseFrontend.Properties.Resources.AuthorIcon;
-            this.btnAuthor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAuthor.Location = new System.Drawing.Point(94, 89);
-            this.btnAuthor.Name = "btnAuthor";
-            this.btnAuthor.Size = new System.Drawing.Size(136, 70);
-            this.btnAuthor.TabIndex = 1;
-            this.btnAuthor.Text = "Author";
-            this.btnAuthor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAuthor.UseVisualStyleBackColor = false;
+            btnAuthor.BackColor = SystemColors.Window;
+            btnAuthor.FlatStyle = FlatStyle.Flat;
+            btnAuthor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAuthor.Image = Properties.Resources.AuthorIcon;
+            btnAuthor.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAuthor.Location = new Point(94, 89);
+            btnAuthor.Name = "btnAuthor";
+            btnAuthor.Size = new Size(136, 70);
+            btnAuthor.TabIndex = 1;
+            btnAuthor.Text = "Author";
+            btnAuthor.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAuthor.UseVisualStyleBackColor = false;
             // 
             // btnBook
             // 
-            this.btnBook.BackColor = System.Drawing.SystemColors.Window;
-            this.btnBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBook.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBook.Image = global::PBLDatabaseFrontend.Properties.Resources.bookIcon;
-            this.btnBook.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBook.Location = new System.Drawing.Point(94, 210);
-            this.btnBook.Name = "btnBook";
-            this.btnBook.Size = new System.Drawing.Size(136, 70);
-            this.btnBook.TabIndex = 2;
-            this.btnBook.Text = "Book";
-            this.btnBook.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBook.UseVisualStyleBackColor = false;
+            btnBook.BackColor = SystemColors.Window;
+            btnBook.FlatStyle = FlatStyle.Flat;
+            btnBook.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBook.Image = Properties.Resources.bookIcon;
+            btnBook.ImageAlign = ContentAlignment.MiddleLeft;
+            btnBook.Location = new Point(94, 210);
+            btnBook.Name = "btnBook";
+            btnBook.Size = new Size(136, 70);
+            btnBook.TabIndex = 2;
+            btnBook.Text = "Book";
+            btnBook.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnBook.UseVisualStyleBackColor = false;
             // 
             // btnCatagory
             // 
-            this.btnCatagory.BackColor = System.Drawing.SystemColors.Window;
-            this.btnCatagory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCatagory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCatagory.Image = global::PBLDatabaseFrontend.Properties.Resources.catagoryIcon;
-            this.btnCatagory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCatagory.Location = new System.Drawing.Point(94, 331);
-            this.btnCatagory.Name = "btnCatagory";
-            this.btnCatagory.Size = new System.Drawing.Size(136, 70);
-            this.btnCatagory.TabIndex = 3;
-            this.btnCatagory.Text = "Catagory";
-            this.btnCatagory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCatagory.UseVisualStyleBackColor = false;
+            btnCatagory.BackColor = SystemColors.Window;
+            btnCatagory.FlatStyle = FlatStyle.Flat;
+            btnCatagory.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCatagory.Image = Properties.Resources.catagoryIcon;
+            btnCatagory.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCatagory.Location = new Point(94, 331);
+            btnCatagory.Name = "btnCatagory";
+            btnCatagory.Size = new Size(136, 70);
+            btnCatagory.TabIndex = 3;
+            btnCatagory.Text = "Catagory";
+            btnCatagory.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCatagory.UseVisualStyleBackColor = false;
             // 
             // btnLoan
             // 
-            this.btnLoan.BackColor = System.Drawing.SystemColors.Window;
-            this.btnLoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLoan.Image = global::PBLDatabaseFrontend.Properties.Resources.LoanIcon;
-            this.btnLoan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoan.Location = new System.Drawing.Point(312, 210);
-            this.btnLoan.Name = "btnLoan";
-            this.btnLoan.Size = new System.Drawing.Size(136, 70);
-            this.btnLoan.TabIndex = 4;
-            this.btnLoan.Text = "Loan";
-            this.btnLoan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLoan.UseVisualStyleBackColor = false;
+            btnLoan.BackColor = SystemColors.Window;
+            btnLoan.FlatStyle = FlatStyle.Flat;
+            btnLoan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLoan.Image = Properties.Resources.LoanIcon;
+            btnLoan.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLoan.Location = new Point(312, 210);
+            btnLoan.Name = "btnLoan";
+            btnLoan.Size = new Size(136, 70);
+            btnLoan.TabIndex = 4;
+            btnLoan.Text = "Loan";
+            btnLoan.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnLoan.UseVisualStyleBackColor = false;
             // 
             // btnMember
             // 
-            this.btnMember.BackColor = System.Drawing.SystemColors.Window;
-            this.btnMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMember.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnMember.Image = global::PBLDatabaseFrontend.Properties.Resources.memberIcon;
-            this.btnMember.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMember.Location = new System.Drawing.Point(530, 210);
-            this.btnMember.Name = "btnMember";
-            this.btnMember.Size = new System.Drawing.Size(136, 70);
-            this.btnMember.TabIndex = 5;
-            this.btnMember.Text = "Member";
-            this.btnMember.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMember.UseVisualStyleBackColor = false;
+            btnMember.BackColor = SystemColors.Window;
+            btnMember.FlatStyle = FlatStyle.Flat;
+            btnMember.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMember.Image = Properties.Resources.memberIcon;
+            btnMember.ImageAlign = ContentAlignment.MiddleLeft;
+            btnMember.Location = new Point(530, 210);
+            btnMember.Name = "btnMember";
+            btnMember.Size = new Size(136, 70);
+            btnMember.TabIndex = 5;
+            btnMember.Text = "Member";
+            btnMember.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnMember.UseVisualStyleBackColor = false;
             // 
             // TableSelect
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 490);
-            this.ControlBox = false;
-            this.Controls.Add(this.btnMember);
-            this.Controls.Add(this.btnLoan);
-            this.Controls.Add(this.btnCatagory);
-            this.Controls.Add(this.btnBook);
-            this.Controls.Add(this.btnAuthor);
-            this.Controls.Add(this.lblHeading);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "TableSelect";
-            this.Text = "Please Select a Table...";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(761, 490);
+            Controls.Add(btnMember);
+            Controls.Add(btnLoan);
+            Controls.Add(btnCatagory);
+            Controls.Add(btnBook);
+            Controls.Add(btnAuthor);
+            Controls.Add(lblHeading);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "TableSelect";
+            Text = "Please Select a Table...";
+            FormClosing += TableSelect_FormClosing;
+            ResumeLayout(false);
         }
 
         #endregion

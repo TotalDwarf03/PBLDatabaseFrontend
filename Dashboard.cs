@@ -115,5 +115,14 @@ namespace PBLDatabaseFrontend
 
             lblOverdueBooks.Text = ($"Overdue Books: {dtOverdueBooks.Rows.Count}");
         }
+
+        private void btnInsNewRecord_Click(object sender, EventArgs e)
+        {
+            TableSelect frm = new TableSelect();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
+        }
     }
 }
