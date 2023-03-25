@@ -118,7 +118,7 @@ namespace PBLDatabaseFrontend
 
         private void btnInsNewRecord_Click(object sender, EventArgs e)
         {
-            TableSelect frm = new TableSelect();
+            TableSelect frm = new TableSelect("ins");
             frm.Owner = this;
 
             frm.Show();

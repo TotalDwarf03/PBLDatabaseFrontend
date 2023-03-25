@@ -63,6 +63,7 @@
             btnAuthor.Text = "Author";
             btnAuthor.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAuthor.UseVisualStyleBackColor = false;
+            btnAuthor.Click += btnAuthor_Click;
             // 
             // btnBook
             // 
@@ -78,6 +79,7 @@
             btnBook.Text = "Book";
             btnBook.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnBook.UseVisualStyleBackColor = false;
+            btnBook.Click += btnBook_Click;
             // 
             // btnCatagory
             // 
@@ -93,6 +95,7 @@
             btnCatagory.Text = "Catagory";
             btnCatagory.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCatagory.UseVisualStyleBackColor = false;
+            btnCatagory.Click += btnCatagory_Click;
             // 
             // btnLoan
             // 
@@ -108,6 +111,7 @@
             btnLoan.Text = "Loan";
             btnLoan.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnLoan.UseVisualStyleBackColor = false;
+            btnLoan.Click += btnLoan_Click;
             // 
             // btnMember
             // 
@@ -123,6 +127,7 @@
             btnMember.Text = "Member";
             btnMember.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMember.UseVisualStyleBackColor = false;
+            btnMember.Click += btnMember_Click;
             // 
             // TableSelect
             // 
