@@ -12,13 +12,9 @@ namespace PBLDatabaseFrontend
 {
     public partial class InsertRecord : Form
     {
-        string TableName;
-
-        public InsertRecord(string passedTable)
+        public InsertRecord()
         {
             InitializeComponent();
-
-            TableName = passedTable;
         }
 
         private void InsertRecord_FormClosing(object sender, FormClosingEventArgs e)
@@ -31,6 +27,53 @@ namespace PBLDatabaseFrontend
             {
                 form.Dispose();
             }
+        }
+
+        // List of Tables
+        // {<Tablename>, <x position>}
+        string[,] CurrentTableList = { { "Author", "0" }, { "Member", "219" }, { "Loan", "438" }, { "Book", "657" }, { "Catagory", "876" }, };
+        int CurrentTablePointer = 2;
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            Panel oldPanel = (Panel)this.Controls.Find("pn" + CurrentTableList[CurrentTablePointer, 0].ToString(), true).SingleOrDefault();
+            oldPanel.Enabled = false;
+
+            if (CurrentTablePointer != 0)
+            {
+                CurrentTablePointer--;
+            }
+            else
+            {
+                CurrentTablePointer = 4;
+            }
+
+            pnTableSelect.Location = new Point(Convert.ToInt16(CurrentTableList[CurrentTablePointer, 1]), 9);
+            lblTableName.Text = CurrentTableList[CurrentTablePointer, 0].ToString();
+
+            Panel newPanel = (Panel)this.Controls.Find("pn" + CurrentTableList[CurrentTablePointer, 0].ToString(), true).SingleOrDefault();
+            newPanel.Enabled = true;
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            Panel oldPanel = (Panel)this.Controls.Find("pn" + CurrentTableList[CurrentTablePointer, 0].ToString(), true).SingleOrDefault();
+            oldPanel.Enabled = false;
+
+            if (CurrentTablePointer != 4)
+            {
+                CurrentTablePointer++;
+            }
+            else
+            {
+                CurrentTablePointer = 0;
+            }
+
+            pnTableSelect.Location = new Point(Convert.ToInt16(CurrentTableList[CurrentTablePointer, 1]), 9);
+            lblTableName.Text = CurrentTableList[CurrentTablePointer, 0].ToString();
+
+            Panel newPanel = (Panel)this.Controls.Find("pn" + CurrentTableList[CurrentTablePointer, 0].ToString(), true).SingleOrDefault();
+            newPanel.Enabled = true;
         }
     }
 }

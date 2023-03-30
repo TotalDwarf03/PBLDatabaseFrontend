@@ -187,12 +187,12 @@
             // 
             lblBooksDueForReturn.BackColor = SystemColors.Window;
             lblBooksDueForReturn.BorderStyle = BorderStyle.FixedSingle;
-            lblBooksDueForReturn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblBooksDueForReturn.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblBooksDueForReturn.Location = new Point(263, 12);
             lblBooksDueForReturn.Name = "lblBooksDueForReturn";
             lblBooksDueForReturn.Size = new Size(234, 30);
             lblBooksDueForReturn.TabIndex = 9;
-            lblBooksDueForReturn.Text = "Books Due For Return";
+            lblBooksDueForReturn.Text = "Books Due for Return:";
             lblBooksDueForReturn.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lvMostPopularBooks

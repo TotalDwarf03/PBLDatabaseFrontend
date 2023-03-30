@@ -107,7 +107,7 @@ namespace PBLDatabaseFrontend
                                                 ON l.memberid = m.memberid
                                             WHERE 
                                                 IFNULL(l.datereturned, 1) = 1
-                                                AND l.datedue > DATE()
+                                                AND l.datedue < DATE()
                                             ORDER BY l.datedue";
 
             DataTable dtOverdueBooks = controller.RunQuery(getOverdueBooks);
@@ -118,7 +118,7 @@ namespace PBLDatabaseFrontend
 
         private void btnInsNewRecord_Click(object sender, EventArgs e)
         {
-            TableSelect frm = new TableSelect("ins");
+            InsertRecord frm = new InsertRecord();
             frm.Owner = this;
 
             frm.Show();

@@ -12,12 +12,9 @@ namespace PBLDatabaseFrontend
 {
     public partial class ViewEditRecords : Form
     {
-        string TableName;
-
-        public ViewEditRecords(string passedTable)
+        public ViewEditRecords()
         {
             InitializeComponent();
-            TableName = passedTable;
         }
     }
 }
