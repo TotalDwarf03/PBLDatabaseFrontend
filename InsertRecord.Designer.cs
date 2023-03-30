@@ -48,7 +48,7 @@
             pnAuthor.Enabled = false;
             pnAuthor.Location = new Point(13, 70);
             pnAuthor.Name = "pnAuthor";
-            pnAuthor.Size = new Size(200, 408);
+            pnAuthor.Size = new Size(200, 358);
             pnAuthor.TabIndex = 2;
             // 
             // pnMember
@@ -58,7 +58,7 @@
             pnMember.Enabled = false;
             pnMember.Location = new Point(232, 70);
             pnMember.Name = "pnMember";
-            pnMember.Size = new Size(200, 408);
+            pnMember.Size = new Size(200, 358);
             pnMember.TabIndex = 3;
             // 
             // pnLoan
@@ -67,7 +67,7 @@
             pnLoan.BorderStyle = BorderStyle.FixedSingle;
             pnLoan.Location = new Point(451, 70);
             pnLoan.Name = "pnLoan";
-            pnLoan.Size = new Size(200, 408);
+            pnLoan.Size = new Size(200, 358);
             pnLoan.TabIndex = 4;
             // 
             // pnBook
@@ -77,7 +77,7 @@
             pnBook.Enabled = false;
             pnBook.Location = new Point(670, 70);
             pnBook.Name = "pnBook";
-            pnBook.Size = new Size(200, 408);
+            pnBook.Size = new Size(200, 358);
             pnBook.TabIndex = 5;
             // 
             // pnCatagory
@@ -87,7 +87,7 @@
             pnCatagory.Enabled = false;
             pnCatagory.Location = new Point(889, 70);
             pnCatagory.Name = "pnCatagory";
-            pnCatagory.Size = new Size(200, 408);
+            pnCatagory.Size = new Size(200, 358);
             pnCatagory.TabIndex = 6;
             // 
             // btnRight
