@@ -50,10 +50,8 @@
             lblLoanBookID = new Label();
             tbLoanDateDue = new TextBox();
             lblLoanMemberID = new Label();
-            tbLoanDateOut = new TextBox();
             cbLoanBookID = new ComboBox();
             lblLoanDateDue = new Label();
-            lblLoanDateOut = new Label();
             pnBook = new Panel();
             cbBookCatagoryID = new ComboBox();
             lblBookTitle = new Label();
@@ -67,8 +65,8 @@
             btnRight = new Button();
             pnTableSelect = new Panel();
             btnLeft = new Button();
-            lblLoan = new Label();
             lblTableName = new Label();
+            lblLoan = new Label();
             lblMember = new Label();
             lblAuthor = new Label();
             lblBook = new Label();
@@ -249,10 +247,8 @@
             pnLoan.Controls.Add(lblLoanBookID);
             pnLoan.Controls.Add(tbLoanDateDue);
             pnLoan.Controls.Add(lblLoanMemberID);
-            pnLoan.Controls.Add(tbLoanDateOut);
             pnLoan.Controls.Add(cbLoanBookID);
             pnLoan.Controls.Add(lblLoanDateDue);
-            pnLoan.Controls.Add(lblLoanDateOut);
             pnLoan.Location = new Point(451, 70);
             pnLoan.Name = "pnLoan";
             pnLoan.Size = new Size(200, 358);
@@ -280,7 +276,7 @@
             // tbLoanDateDue
             // 
             tbLoanDateDue.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tbLoanDateDue.Location = new Point(3, 191);
+            tbLoanDateDue.Location = new Point(3, 135);
             tbLoanDateDue.Name = "tbLoanDateDue";
             tbLoanDateDue.Size = new Size(192, 29);
             tbLoanDateDue.TabIndex = 17;
@@ -295,14 +291,6 @@
             lblLoanMemberID.TabIndex = 12;
             lblLoanMemberID.Text = "Member:";
             // 
-            // tbLoanDateOut
-            // 
-            tbLoanDateOut.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tbLoanDateOut.Location = new Point(3, 135);
-            tbLoanDateOut.Name = "tbLoanDateOut";
-            tbLoanDateOut.Size = new Size(192, 29);
-            tbLoanDateOut.TabIndex = 15;
-            // 
             // cbLoanBookID
             // 
             cbLoanBookID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -316,21 +304,11 @@
             // 
             lblLoanDateDue.AutoSize = true;
             lblLoanDateDue.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblLoanDateDue.Location = new Point(3, 167);
+            lblLoanDateDue.Location = new Point(3, 111);
             lblLoanDateDue.Name = "lblLoanDateDue";
-            lblLoanDateDue.Size = new Size(82, 21);
+            lblLoanDateDue.Size = new Size(85, 21);
             lblLoanDateDue.TabIndex = 16;
-            lblLoanDateDue.Text = "Surname:";
-            // 
-            // lblLoanDateOut
-            // 
-            lblLoanDateOut.AutoSize = true;
-            lblLoanDateOut.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblLoanDateOut.Location = new Point(3, 111);
-            lblLoanDateOut.Name = "lblLoanDateOut";
-            lblLoanDateOut.Size = new Size(90, 21);
-            lblLoanDateOut.TabIndex = 14;
-            lblLoanDateOut.Text = "Forename:";
+            lblLoanDateDue.Text = "Date Due:";
             // 
             // pnBook
             // 
@@ -472,16 +450,6 @@
             btnLeft.UseVisualStyleBackColor = false;
             btnLeft.Click += btnLeft_Click;
             // 
-            // lblLoan
-            // 
-            lblLoan.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblLoan.Location = new Point(482, 11);
-            lblLoan.Name = "lblLoan";
-            lblLoan.Size = new Size(138, 50);
-            lblLoan.TabIndex = 15;
-            lblLoan.Text = "Loan";
-            lblLoan.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // lblTableName
             // 
             lblTableName.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
@@ -491,6 +459,16 @@
             lblTableName.TabIndex = 9;
             lblTableName.Text = "Loan";
             lblTableName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblLoan
+            // 
+            lblLoan.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblLoan.Location = new Point(482, 11);
+            lblLoan.Name = "lblLoan";
+            lblLoan.Size = new Size(138, 50);
+            lblLoan.TabIndex = 15;
+            lblLoan.Text = "Loan";
+            lblLoan.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblMember
             // 
@@ -600,10 +578,8 @@
         private Label lblLoanBookID;
         private TextBox tbLoanDateDue;
         private Label lblLoanMemberID;
-        private TextBox tbLoanDateOut;
         private ComboBox cbLoanBookID;
         private Label lblLoanDateDue;
-        private Label lblLoanDateOut;
         private ComboBox cbBookCatagoryID;
         private Label lblBookTitle;
         private Label lblBookCatagoryID;
