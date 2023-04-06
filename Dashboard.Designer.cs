@@ -101,7 +101,7 @@
             btnVMTables.Name = "btnVMTables";
             btnVMTables.Size = new Size(220, 58);
             btnVMTables.TabIndex = 0;
-            btnVMTables.Text = "View/Modify Tables";
+            btnVMTables.Text = "View/Modify Records";
             btnVMTables.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnVMTables.UseVisualStyleBackColor = false;
             // 

@@ -53,15 +53,15 @@
             cbLoanBookID = new ComboBox();
             lblLoanDateDue = new Label();
             pnBook = new Panel();
-            cbBookCatagoryID = new ComboBox();
+            cbBookCategoryID = new ComboBox();
             lblBookTitle = new Label();
-            lblBookCatagoryID = new Label();
+            lblBookCategoryID = new Label();
             tbBookTitle = new TextBox();
             cbBookAuthorID = new ComboBox();
             lblBookAuthorID = new Label();
-            pnCatagory = new Panel();
-            lblCatagory = new Label();
-            tbCatagory = new TextBox();
+            pnCategory = new Panel();
+            lblCategory = new Label();
+            tbCategory = new TextBox();
             btnRight = new Button();
             pnTableSelect = new Panel();
             btnLeft = new Button();
@@ -70,13 +70,17 @@
             lblMember = new Label();
             lblAuthor = new Label();
             lblBook = new Label();
-            lblCatagoryTitle = new Label();
+            lblCategoryTitle = new Label();
+            pnTableControls = new Panel();
+            btnClear = new Button();
+            btnSubmit = new Button();
             pnAuthor.SuspendLayout();
             pnMember.SuspendLayout();
             pnLoan.SuspendLayout();
             pnBook.SuspendLayout();
-            pnCatagory.SuspendLayout();
+            pnCategory.SuspendLayout();
             pnTableSelect.SuspendLayout();
+            pnTableControls.SuspendLayout();
             SuspendLayout();
             // 
             // pnAuthor
@@ -256,11 +260,14 @@
             // 
             // cbLoanMemberID
             // 
+            cbLoanMemberID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbLoanMemberID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbLoanMemberID.ForeColor = SystemColors.WindowText;
             cbLoanMemberID.FormattingEnabled = true;
             cbLoanMemberID.Location = new Point(3, 78);
             cbLoanMemberID.Name = "cbLoanMemberID";
             cbLoanMemberID.Size = new Size(192, 29);
+            cbLoanMemberID.Sorted = true;
             cbLoanMemberID.TabIndex = 13;
             // 
             // lblLoanBookID
@@ -293,11 +300,14 @@
             // 
             // cbLoanBookID
             // 
+            cbLoanBookID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbLoanBookID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbLoanBookID.ForeColor = SystemColors.WindowText;
             cbLoanBookID.FormattingEnabled = true;
             cbLoanBookID.Location = new Point(3, 23);
             cbLoanBookID.Name = "cbLoanBookID";
             cbLoanBookID.Size = new Size(192, 29);
+            cbLoanBookID.Sorted = true;
             cbLoanBookID.TabIndex = 11;
             // 
             // lblLoanDateDue
@@ -314,9 +324,9 @@
             // 
             pnBook.BackColor = SystemColors.Window;
             pnBook.BorderStyle = BorderStyle.FixedSingle;
-            pnBook.Controls.Add(cbBookCatagoryID);
+            pnBook.Controls.Add(cbBookCategoryID);
             pnBook.Controls.Add(lblBookTitle);
-            pnBook.Controls.Add(lblBookCatagoryID);
+            pnBook.Controls.Add(lblBookCategoryID);
             pnBook.Controls.Add(tbBookTitle);
             pnBook.Controls.Add(cbBookAuthorID);
             pnBook.Controls.Add(lblBookAuthorID);
@@ -326,14 +336,17 @@
             pnBook.Size = new Size(200, 358);
             pnBook.TabIndex = 5;
             // 
-            // cbBookCatagoryID
+            // cbBookCategoryID
             // 
-            cbBookCatagoryID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cbBookCatagoryID.FormattingEnabled = true;
-            cbBookCatagoryID.Location = new Point(3, 134);
-            cbBookCatagoryID.Name = "cbBookCatagoryID";
-            cbBookCatagoryID.Size = new Size(192, 29);
-            cbBookCatagoryID.TabIndex = 9;
+            cbBookCategoryID.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbBookCategoryID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbBookCategoryID.ForeColor = SystemColors.WindowText;
+            cbBookCategoryID.FormattingEnabled = true;
+            cbBookCategoryID.Location = new Point(3, 134);
+            cbBookCategoryID.Name = "cbBookCategoryID";
+            cbBookCategoryID.Size = new Size(192, 29);
+            cbBookCategoryID.Sorted = true;
+            cbBookCategoryID.TabIndex = 9;
             // 
             // lblBookTitle
             // 
@@ -345,15 +358,15 @@
             lblBookTitle.TabIndex = 4;
             lblBookTitle.Text = "Title:";
             // 
-            // lblBookCatagoryID
+            // lblBookCategoryID
             // 
-            lblBookCatagoryID.AutoSize = true;
-            lblBookCatagoryID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblBookCatagoryID.Location = new Point(3, 111);
-            lblBookCatagoryID.Name = "lblBookCatagoryID";
-            lblBookCatagoryID.Size = new Size(84, 21);
-            lblBookCatagoryID.TabIndex = 8;
-            lblBookCatagoryID.Text = "Catagory:";
+            lblBookCategoryID.AutoSize = true;
+            lblBookCategoryID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblBookCategoryID.Location = new Point(3, 111);
+            lblBookCategoryID.Name = "lblBookCategoryID";
+            lblBookCategoryID.Size = new Size(84, 21);
+            lblBookCategoryID.TabIndex = 8;
+            lblBookCategoryID.Text = "Category:";
             // 
             // tbBookTitle
             // 
@@ -365,11 +378,14 @@
             // 
             // cbBookAuthorID
             // 
+            cbBookAuthorID.DropDownStyle = ComboBoxStyle.DropDownList;
             cbBookAuthorID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbBookAuthorID.ForeColor = SystemColors.WindowText;
             cbBookAuthorID.FormattingEnabled = true;
             cbBookAuthorID.Location = new Point(3, 79);
             cbBookAuthorID.Name = "cbBookAuthorID";
             cbBookAuthorID.Size = new Size(192, 29);
+            cbBookAuthorID.Sorted = true;
             cbBookAuthorID.TabIndex = 7;
             // 
             // lblBookAuthorID
@@ -382,35 +398,35 @@
             lblBookAuthorID.TabIndex = 6;
             lblBookAuthorID.Text = "Author:";
             // 
-            // pnCatagory
+            // pnCategory
             // 
-            pnCatagory.BackColor = SystemColors.Window;
-            pnCatagory.BorderStyle = BorderStyle.FixedSingle;
-            pnCatagory.Controls.Add(lblCatagory);
-            pnCatagory.Controls.Add(tbCatagory);
-            pnCatagory.Enabled = false;
-            pnCatagory.Location = new Point(889, 70);
-            pnCatagory.Name = "pnCatagory";
-            pnCatagory.Size = new Size(200, 358);
-            pnCatagory.TabIndex = 6;
+            pnCategory.BackColor = SystemColors.Window;
+            pnCategory.BorderStyle = BorderStyle.FixedSingle;
+            pnCategory.Controls.Add(lblCategory);
+            pnCategory.Controls.Add(tbCategory);
+            pnCategory.Enabled = false;
+            pnCategory.Location = new Point(889, 70);
+            pnCategory.Name = "pnCategory";
+            pnCategory.Size = new Size(200, 358);
+            pnCategory.TabIndex = 6;
             // 
-            // lblCatagory
+            // lblCategory
             // 
-            lblCatagory.AutoSize = true;
-            lblCatagory.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblCatagory.Location = new Point(3, -1);
-            lblCatagory.Name = "lblCatagory";
-            lblCatagory.Size = new Size(84, 21);
-            lblCatagory.TabIndex = 10;
-            lblCatagory.Text = "Catagory:";
+            lblCategory.AutoSize = true;
+            lblCategory.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCategory.Location = new Point(3, -1);
+            lblCategory.Name = "lblCategory";
+            lblCategory.Size = new Size(84, 21);
+            lblCategory.TabIndex = 10;
+            lblCategory.Text = "Category:";
             // 
-            // tbCatagory
+            // tbCategory
             // 
-            tbCatagory.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tbCatagory.Location = new Point(3, 23);
-            tbCatagory.Name = "tbCatagory";
-            tbCatagory.Size = new Size(192, 29);
-            tbCatagory.TabIndex = 11;
+            tbCategory.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tbCategory.Location = new Point(3, 23);
+            tbCategory.Name = "tbCategory";
+            tbCategory.Size = new Size(192, 29);
+            tbCategory.TabIndex = 11;
             // 
             // btnRight
             // 
@@ -500,28 +516,60 @@
             lblBook.Text = "Book";
             lblBook.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // lblCatagoryTitle
+            // lblCategoryTitle
             // 
-            lblCatagoryTitle.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblCatagoryTitle.Location = new Point(920, 11);
-            lblCatagoryTitle.Name = "lblCatagoryTitle";
-            lblCatagoryTitle.Size = new Size(138, 50);
-            lblCatagoryTitle.TabIndex = 14;
-            lblCatagoryTitle.Text = "Catagory";
-            lblCatagoryTitle.TextAlign = ContentAlignment.MiddleCenter;
+            lblCategoryTitle.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCategoryTitle.Location = new Point(920, 11);
+            lblCategoryTitle.Name = "lblCategoryTitle";
+            lblCategoryTitle.Size = new Size(138, 50);
+            lblCategoryTitle.TabIndex = 14;
+            lblCategoryTitle.Text = "Category";
+            lblCategoryTitle.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pnTableControls
+            // 
+            pnTableControls.BackColor = Color.Transparent;
+            pnTableControls.BorderStyle = BorderStyle.FixedSingle;
+            pnTableControls.Controls.Add(btnClear);
+            pnTableControls.Controls.Add(btnSubmit);
+            pnTableControls.Location = new Point(472, 434);
+            pnTableControls.Name = "pnTableControls";
+            pnTableControls.Size = new Size(159, 55);
+            pnTableControls.TabIndex = 16;
+            // 
+            // btnClear
+            // 
+            btnClear.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnClear.Image = Properties.Resources.ClearIcon;
+            btnClear.Location = new Point(3, 3);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(47, 47);
+            btnClear.TabIndex = 1;
+            btnClear.UseVisualStyleBackColor = true;
+            // 
+            // btnSubmit
+            // 
+            btnSubmit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSubmit.Location = new Point(56, 3);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.Size = new Size(98, 47);
+            btnSubmit.TabIndex = 0;
+            btnSubmit.Text = "Submit";
+            btnSubmit.UseVisualStyleBackColor = true;
             // 
             // InsertRecord
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1102, 490);
+            Controls.Add(pnTableControls);
             Controls.Add(pnTableSelect);
             Controls.Add(lblLoan);
-            Controls.Add(lblCatagoryTitle);
+            Controls.Add(lblCategoryTitle);
             Controls.Add(lblBook);
             Controls.Add(lblAuthor);
             Controls.Add(lblMember);
-            Controls.Add(pnCatagory);
+            Controls.Add(pnCategory);
             Controls.Add(pnBook);
             Controls.Add(pnLoan);
             Controls.Add(pnMember);
@@ -533,6 +581,7 @@
             Name = "InsertRecord";
             Text = "Insert New Record";
             FormClosing += InsertRecord_FormClosing;
+            Load += InsertRecord_Load;
             pnAuthor.ResumeLayout(false);
             pnAuthor.PerformLayout();
             pnMember.ResumeLayout(false);
@@ -541,9 +590,10 @@
             pnLoan.PerformLayout();
             pnBook.ResumeLayout(false);
             pnBook.PerformLayout();
-            pnCatagory.ResumeLayout(false);
-            pnCatagory.PerformLayout();
+            pnCategory.ResumeLayout(false);
+            pnCategory.PerformLayout();
             pnTableSelect.ResumeLayout(false);
+            pnTableControls.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -554,8 +604,8 @@
         private Panel pnMember;
         private Panel pnLoan;
         private Panel pnBook;
-        private Panel pnCatagory;
-        private Button button1;
+        private Panel pnCategory;
+        private Button btnClear;
         private Button btnRight;
         private Panel pnTableSelect;
         private Label lblTableName;
@@ -580,18 +630,20 @@
         private Label lblLoanMemberID;
         private ComboBox cbLoanBookID;
         private Label lblLoanDateDue;
-        private ComboBox cbBookCatagoryID;
+        private ComboBox cbBookCategoryID;
         private Label lblBookTitle;
-        private Label lblBookCatagoryID;
+        private Label lblBookCategoryID;
         private TextBox tbBookTitle;
         private ComboBox cbBookAuthorID;
         private Label lblBookAuthorID;
-        private Label lblCatagory;
-        private TextBox tbCatagory;
+        private Label lblCategory;
+        private TextBox tbCategory;
         private Label lblLoan;
         private Label lblMember;
         private Label lblAuthor;
         private Label lblBook;
-        private Label lblCatagoryTitle;
+        private Label lblCategoryTitle;
+        private Panel pnTableControls;
+        private Button btnSubmit;
     }
 }
