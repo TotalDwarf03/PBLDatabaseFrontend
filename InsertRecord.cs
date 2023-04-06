@@ -213,45 +213,160 @@ namespace PBLDatabaseFrontend
                                         )
                                     ";
 
-                    ParameterMap forename = new ParameterMap();
-                    forename.parameterName = "authorFname";
-                    forename.parameterValue = tbAuthorFname.Text;
+                    ParameterMap AuthorForename = new ParameterMap();
+                    AuthorForename.parameterName = "authorFname";
+                    AuthorForename.parameterValue = tbAuthorFname.Text;
 
-                    ParameterMap surname = new ParameterMap();
-                    surname.parameterName = "authorSname";
-                    surname.parameterValue = tbAuthorSname.Text;
+                    ParameterMap AuthorSurname = new ParameterMap();
+                    AuthorSurname.parameterName = "authorSname";
+                    AuthorSurname.parameterValue = tbAuthorSname.Text;
 
-                    Parameters.Add(forename);
-                    Parameters.Add(surname);
+                    Parameters.Add(AuthorForename);
+                    Parameters.Add(AuthorSurname);
 
                     break;
 
                 // Member Panel Selected
                 case 1:
-                    tbMemberFname.Clear();
-                    tbMemberSname.Clear();
-                    tbMemberEmail.Clear();
-                    tbMemberStreet.Clear();
-                    tbMemberHouse.Clear();
+                    InsertSQL = @"  INSERT INTO member
+                                        (
+                                            fname,
+                                            sname,
+                                            email,
+                                            streetname,
+                                            houseidentifier
+                                        )
+                                    VALUES
+                                        (
+                                            @fname,
+                                            @sname,
+                                            @email,
+                                            @streetname,
+                                            @houseidentifier
+                                        )
+                                    ";
+
+                    ParameterMap MemberForename = new ParameterMap();
+                    MemberForename.parameterName = "fname";
+                    MemberForename.parameterValue = tbMemberFname.Text;
+
+                    ParameterMap MemberSurname = new ParameterMap();
+                    MemberSurname.parameterName = "sname";
+                    MemberSurname.parameterValue = tbMemberSname.Text;
+
+                    ParameterMap MemberEmail = new ParameterMap();
+                    MemberEmail.parameterName = "email";
+                    MemberEmail.parameterValue = tbMemberEmail.Text;
+
+                    ParameterMap MemberStreet = new ParameterMap();
+                    MemberStreet.parameterName = "streetname";
+                    MemberStreet.parameterValue = tbMemberStreet.Text;
+
+                    ParameterMap MemberHouse = new ParameterMap();
+                    MemberHouse.parameterName = "houseidentifier";
+                    MemberHouse.parameterValue = tbMemberHouse.Text;
+
+                    Parameters.Add(MemberForename); 
+                    Parameters.Add(MemberSurname); 
+                    Parameters.Add(MemberEmail); 
+                    Parameters.Add(MemberStreet); 
+                    Parameters.Add(MemberHouse);
+
                     break;
 
                 // Loan Panel Selected
                 case 2:
-                    cbLoanBookID.SelectedIndex = -1;
-                    cbLoanMemberID.SelectedIndex = -1;
-                    tbLoanDateDue.Clear();
+                    InsertSQL = @"  INSERT INTO loan
+                                        (
+                                            bookid,
+                                            memberid,
+                                            dateout,
+                                            datedue
+                                        )
+                                    VALUES
+                                        (
+                                            @bookid,
+                                            @memberid,
+                                            @dateout,
+                                            @datedue
+                                        )
+                                    ";
+
+                    ParameterMap LoanBookID = new ParameterMap();
+                    LoanBookID.parameterName = "bookid";
+                    LoanBookID.parameterValue = cbLoanBookID.SelectedValue.ToString();
+
+                    ParameterMap LoanMemberID = new ParameterMap();
+                    LoanMemberID.parameterName = "memberid";
+                    LoanMemberID.parameterValue = cbLoanMemberID.SelectedValue.ToString();
+
+                    ParameterMap LoanDateOut = new ParameterMap();
+                    LoanDateOut.parameterName = "dateout";
+                    LoanDateOut.parameterValue = DateTime.Today.ToString("yyyy-MM-dd");
+
+                    ParameterMap LoanDateDue = new ParameterMap();
+                    LoanDateDue.parameterName = "datedue";
+                    LoanDateDue.parameterValue = tbLoanDateDue.Text;
+
+                    Parameters.Add(LoanBookID);
+                    Parameters.Add(LoanMemberID);
+                    Parameters.Add(LoanDateOut);
+                    Parameters.Add(LoanDateDue);
+
                     break;
 
                 // Book Panel Selected
                 case 3:
-                    tbBookTitle.Clear();
-                    cbBookAuthorID.SelectedIndex = -1;
-                    cbBookCategoryID.SelectedIndex = -1;
+                    InsertSQL = @"  INSERT INTO book
+                                        (
+                                            title,
+                                            authorid,
+                                            categoryid
+                                        )
+                                    VALUES
+                                        (
+                                            @title,
+                                            @authorid,
+                                            @categoryid
+                                        )
+                                    ";
+
+                    ParameterMap BookTitle = new ParameterMap();
+                    BookTitle.parameterName = "title";
+                    BookTitle.parameterValue = tbBookTitle.Text;
+
+                    ParameterMap BookAuthorID = new ParameterMap();
+                    BookAuthorID.parameterName = "authorid";
+                    BookAuthorID.parameterValue = cbBookAuthorID.SelectedValue.ToString();
+
+                    ParameterMap BookCategoryID = new ParameterMap();
+                    BookCategoryID.parameterName = "categoryid";
+                    BookCategoryID.parameterValue = cbBookCategoryID.SelectedValue.ToString();
+
+                    Parameters.Add(BookTitle);
+                    Parameters.Add(BookAuthorID);
+                    Parameters.Add(BookCategoryID);
+
                     break;
 
                 // Catagory Panel Selected
                 case 4:
-                    tbCategory.Clear();
+                    InsertSQL = @"  INSERT INTO category
+                                        (
+                                            type
+                                        )
+                                    VALUES
+                                        (
+                                            @type
+                                        )
+                                    ";
+
+                    ParameterMap CategoryType = new ParameterMap();
+                    CategoryType.parameterName = "type";
+                    CategoryType.parameterValue = tbCategory.Text;
+
+                    Parameters.Add(CategoryType);
+
                     break;
             }
 
@@ -263,6 +378,7 @@ namespace PBLDatabaseFrontend
             }
 
             ClearSelection();
+            InsertRecord_Load(sender, EventArgs.Empty);
         }
     }
 }

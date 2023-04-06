@@ -22,7 +22,7 @@ namespace PBLDatabaseFrontend
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (TickCount < 5)
+            if (TickCount < 6)
             {
                 TickCount++;
                 LoadingBar.PerformStep();

@@ -37,12 +37,13 @@
             // timer1
             // 
             timer1.Enabled = true;
-            timer1.Interval = 1000;
+            timer1.Interval = 500;
             timer1.Tick += timer1_Tick;
             // 
             // LoadingBar
             // 
             LoadingBar.Location = new Point(12, 292);
+            LoadingBar.Maximum = 120;
             LoadingBar.Name = "LoadingBar";
             LoadingBar.Size = new Size(410, 23);
             LoadingBar.Step = 20;

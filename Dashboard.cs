@@ -45,49 +45,49 @@ namespace PBLDatabaseFrontend
 
             // Most Popular Books
             string getMostPopularBooks = @" SELECT
-                                                COUNT(l.loanid) AS Loans,
-                                                b.title AS Title
-                                            FROM loan AS l
-                                            JOIN book AS b
-                                                ON l.bookid = b.bookid
-                                            GROUP BY b.title
-                                            ORDER BY COUNT(l.loanid) DESC
-                                            LIMIT 5";
+                                            COUNT(l.loanid) AS Loans,
+                                            b.title AS Title
+                                        FROM loan AS l
+                                        JOIN book AS b
+                                            ON l.bookid = b.bookid
+                                        GROUP BY b.title
+                                        ORDER BY COUNT(l.loanid) DESC
+                                        LIMIT 5";
 
             DataTable dtMostPopularBooks = controller.RunQuery(getMostPopularBooks);
             GenerateListview(lvMostPopularBooks, dtMostPopularBooks);
 
             // Most Popular Authors
             string getMostPopularAuthor = @"SELECT
-                                                COUNT(l.loanid) AS Loans,
-                                                a.fname || ' ' || a.sname AS Author
-                                            FROM loan AS l
-                                            JOIN book AS b
-                                                ON l.bookid = b.bookid
-                                            JOIN author AS a
-                                                ON b.authorid = a.authorid
-                                            GROUP BY a.fname || ' ' || a.sname
-                                            ORDER BY COUNT(l.loanid) DESC
-                                            LIMIT 5";
+                                            COUNT(l.loanid) AS Loans,
+                                            a.fname || ' ' || a.sname AS Author
+                                        FROM loan AS l
+                                        JOIN book AS b
+                                            ON l.bookid = b.bookid
+                                        JOIN author AS a
+                                            ON b.authorid = a.authorid
+                                        GROUP BY a.fname || ' ' || a.sname
+                                        ORDER BY COUNT(l.loanid) DESC
+                                        LIMIT 5";
 
             DataTable dtMostPopularAuthor = controller.RunQuery(getMostPopularAuthor);
             GenerateListview(lvMostPopularAuthors, dtMostPopularAuthor);
 
             // Books Due for Return (in next 3 days)
             string getBooksDueForReturn = @"SELECT
-                                                l.datedue AS DueDate,
-                                                b.title AS Title,
-                                                m.memberid AS MemberID,
-                                                m.fname || ' ' || m.sname AS MemberName
-                                            FROM loan l
-                                            JOIN book b
-                                                ON l.bookid = b.bookid
-                                            JOIN member m
-                                                ON l.memberid = m.memberid
-                                            WHERE 
-                                                IFNULL(l.datereturned, 1) = 1
-                                                AND l.datedue BETWEEN DATE() AND DATE() + 3
-                                            ORDER BY l.datedue";
+                                            l.datedue AS DueDate,
+                                            b.title AS Title,
+                                            m.memberid AS MemberID,
+                                            m.fname || ' ' || m.sname AS MemberName
+                                        FROM loan l
+                                        JOIN book b
+                                            ON l.bookid = b.bookid
+                                        JOIN member m
+                                            ON l.memberid = m.memberid
+                                        WHERE 
+                                            IFNULL(l.datereturned, 1) = 1
+                                            AND l.datedue BETWEEN DATE() AND DATE() + 3
+                                        ORDER BY l.datedue";
 
             DataTable dtBooksDueForReturn = controller.RunQuery(getBooksDueForReturn);
             GenerateListview(lvBooksDueForReturn, dtBooksDueForReturn);
@@ -96,19 +96,19 @@ namespace PBLDatabaseFrontend
 
             // Overdue Books
             string getOverdueBooks = @"SELECT
-                                                l.datedue AS DueDate,
-                                                b.title AS Title,
-                                                m.memberid AS MemberID,
-                                                m.fname || ' ' || m.sname AS MemberName
-                                            FROM loan l
-                                            JOIN book b
-                                                ON l.bookid = b.bookid
-                                            JOIN member m
-                                                ON l.memberid = m.memberid
-                                            WHERE 
-                                                IFNULL(l.datereturned, 1) = 1
-                                                AND l.datedue < DATE()
-                                            ORDER BY l.datedue";
+                                            l.datedue AS DueDate,
+                                            b.title AS Title,
+                                            m.memberid AS MemberID,
+                                            m.fname || ' ' || m.sname AS MemberName
+                                        FROM loan l
+                                        JOIN book b
+                                            ON l.bookid = b.bookid
+                                        JOIN member m
+                                            ON l.memberid = m.memberid
+                                        WHERE 
+                                            IFNULL(l.datereturned, 1) = 1
+                                            AND l.datedue < DATE()
+                                        ORDER BY l.datedue";
 
             DataTable dtOverdueBooks = controller.RunQuery(getOverdueBooks);
             GenerateListview(lvOverdueBooks, dtOverdueBooks);
