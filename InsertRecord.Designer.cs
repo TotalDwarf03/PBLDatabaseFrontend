@@ -546,6 +546,7 @@
             btnClear.Size = new Size(47, 47);
             btnClear.TabIndex = 1;
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // btnSubmit
             // 
@@ -556,6 +557,7 @@
             btnSubmit.TabIndex = 0;
             btnSubmit.Text = "Submit";
             btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // InsertRecord
             // 

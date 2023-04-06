@@ -68,6 +68,46 @@ namespace PBLDatabaseFrontend
             }
         }
 
+        private void AddRecord()
+        {
+            switch (CurrentTablePointer)
+            {
+                // Author Panel Selected
+                case 0:
+                    tbAuthorFname.Clear();
+                    tbAuthorSname.Clear();
+                    break;
+
+                // Member Panel Selected
+                case 1:
+                    tbMemberFname.Clear();
+                    tbMemberSname.Clear();
+                    tbMemberEmail.Clear();
+                    tbMemberStreet.Clear();
+                    tbMemberHouse.Clear();
+                    break;
+
+                // Loan Panel Selected
+                case 2:
+                    cbLoanBookID.SelectedIndex = -1;
+                    cbLoanMemberID.SelectedIndex = -1;
+                    tbLoanDateDue.Clear();
+                    break;
+
+                // Book Panel Selected
+                case 3:
+                    tbBookTitle.Clear();
+                    cbBookAuthorID.SelectedIndex = -1;
+                    cbBookCategoryID.SelectedIndex = -1;
+                    break;
+
+                // Catagory Panel Selected
+                case 4:
+                    tbCategory.Clear();
+                    break;
+            }
+        }
+
         private void InsertRecord_Load(object sender, EventArgs e)
         {
             // Populate Book, Member, Author and Category Drop downs
@@ -187,5 +227,14 @@ namespace PBLDatabaseFrontend
             newPanel.Enabled = true;
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearSelection();
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
