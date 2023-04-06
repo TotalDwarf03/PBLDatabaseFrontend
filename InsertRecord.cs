@@ -68,46 +68,6 @@ namespace PBLDatabaseFrontend
             }
         }
 
-        private void AddRecord()
-        {
-            switch (CurrentTablePointer)
-            {
-                // Author Panel Selected
-                case 0:
-                    tbAuthorFname.Clear();
-                    tbAuthorSname.Clear();
-                    break;
-
-                // Member Panel Selected
-                case 1:
-                    tbMemberFname.Clear();
-                    tbMemberSname.Clear();
-                    tbMemberEmail.Clear();
-                    tbMemberStreet.Clear();
-                    tbMemberHouse.Clear();
-                    break;
-
-                // Loan Panel Selected
-                case 2:
-                    cbLoanBookID.SelectedIndex = -1;
-                    cbLoanMemberID.SelectedIndex = -1;
-                    tbLoanDateDue.Clear();
-                    break;
-
-                // Book Panel Selected
-                case 3:
-                    tbBookTitle.Clear();
-                    cbBookAuthorID.SelectedIndex = -1;
-                    cbBookCategoryID.SelectedIndex = -1;
-                    break;
-
-                // Catagory Panel Selected
-                case 4:
-                    tbCategory.Clear();
-                    break;
-            }
-        }
-
         private void InsertRecord_Load(object sender, EventArgs e)
         {
             // Populate Book, Member, Author and Category Drop downs
@@ -234,7 +194,75 @@ namespace PBLDatabaseFrontend
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            string InsertSQL = "SELECT 1";
+            List<ParameterMap> Parameters = new List<ParameterMap>();
 
+            switch (CurrentTablePointer)
+            {
+                // Author Panel Selected
+                case 0:                    
+                    InsertSQL = @"  INSERT INTO author
+                                        (
+                                            fname,
+                                            sname
+                                        )
+                                    VALUES
+                                        (
+                                            @authorFname,
+                                            @authorSname
+                                        )
+                                    ";
+
+                    ParameterMap forename = new ParameterMap();
+                    forename.parameterName = "authorFname";
+                    forename.parameterValue = tbAuthorFname.Text;
+
+                    ParameterMap surname = new ParameterMap();
+                    surname.parameterName = "authorSname";
+                    surname.parameterValue = tbAuthorSname.Text;
+
+                    Parameters.Add(forename);
+                    Parameters.Add(surname);
+
+                    break;
+
+                // Member Panel Selected
+                case 1:
+                    tbMemberFname.Clear();
+                    tbMemberSname.Clear();
+                    tbMemberEmail.Clear();
+                    tbMemberStreet.Clear();
+                    tbMemberHouse.Clear();
+                    break;
+
+                // Loan Panel Selected
+                case 2:
+                    cbLoanBookID.SelectedIndex = -1;
+                    cbLoanMemberID.SelectedIndex = -1;
+                    tbLoanDateDue.Clear();
+                    break;
+
+                // Book Panel Selected
+                case 3:
+                    tbBookTitle.Clear();
+                    cbBookAuthorID.SelectedIndex = -1;
+                    cbBookCategoryID.SelectedIndex = -1;
+                    break;
+
+                // Catagory Panel Selected
+                case 4:
+                    tbCategory.Clear();
+                    break;
+            }
+
+            int changed = controller.RunNonQuery(InsertSQL, Parameters);
+
+            if (changed > 0)
+            {
+                MessageBox.Show("Record Added Successfully!");
+            }
+
+            ClearSelection();
         }
     }
 }

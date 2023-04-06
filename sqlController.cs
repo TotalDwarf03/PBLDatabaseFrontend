@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace PBLDatabaseFrontend
 {
     class SQLController
     {
-        SQLiteConnection conn = new SQLiteConnection(@"Data Source=Resources\\pontybrynlibrary.db");
+        SQLiteConnection conn = new SQLiteConnection(@"Data Source=pontybrynlibrary.db");
 
         /// <summary>
         /// Executes Select Statements
@@ -76,6 +77,26 @@ namespace PBLDatabaseFrontend
 
             conn.Close();
             return recordsChanged;
+        }
+
+        /// <summary>
+        /// Checks if Database exists - if it doesn't, create the database and populate it with default data
+        /// </summary>
+        public void InitialiseDatabase()
+        {
+            if (!File.Exists("pontybrynlibrary.db"))
+            {
+                SQLiteConnection.CreateFile("pontybrynlibrary.db");
+
+                conn.Open();
+                SQLiteCommand cmd = conn.CreateCommand();
+
+                // This file contains an exported version of the SQL Database off BlackBoard
+                cmd.CommandText = Resources.pontybrynlibrarySETUP;
+
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
         }
     }
 }

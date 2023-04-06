@@ -171,6 +171,34 @@ namespace PBLDatabaseFrontend.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BEGIN TRANSACTION;
+        ///CREATE TABLE IF NOT EXISTS &quot;category&quot; (
+        ///	&quot;categoryid&quot;	INTEGER,
+        ///	&quot;type&quot;	TEXT,
+        ///	PRIMARY KEY(&quot;categoryid&quot; AUTOINCREMENT)
+        ///);
+        ///CREATE TABLE IF NOT EXISTS &quot;member&quot; (
+        ///	&quot;memberid&quot;	INTEGER,
+        ///	&quot;fname&quot;	TEXT NOT NULL,
+        ///	&quot;sname&quot;	TEXT NOT NULL,
+        ///	&quot;email&quot;	TEXT,
+        ///	&quot;streetname&quot;	TEXT NOT NULL,
+        ///	&quot;houseidentifier&quot;	TEXT NOT NULL,
+        ///	PRIMARY KEY(&quot;memberid&quot; AUTOINCREMENT)
+        ///);
+        ///CREATE TABLE IF NOT EXISTS &quot;author&quot; (
+        ///	&quot;authorid&quot;	INTEGER,
+        ///	&quot;fname&quot;	TEXT NOT NULL,
+        ///	&quot;sname&quot;	TEXT NOT NULL,
+        ///	PRIMARY KEY(&quot;autho [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string pontybrynlibrarySETUP {
+            get {
+                return ResourceManager.GetString("pontybrynlibrarySETUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap right_arrow {
