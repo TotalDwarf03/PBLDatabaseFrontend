@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +49,7 @@ namespace PBLDatabaseFrontend
         /// Execute Table functions such as Update or Insert
         /// </summary>
         /// <param name="nonQuery">The table function statement (i.e update)</param>
-        /// <param name="parameterMap">The list of parameters using the customer ParameterMap data class</param>
+        /// <param name="parameterMap">The list of parameters using the customer ParameterMap data class (Optional)</param>
         /// <returns>The number of records changed</returns>
         public int RunNonQuery(string nonQuery, List<ParameterMap> parameterMap)
         {

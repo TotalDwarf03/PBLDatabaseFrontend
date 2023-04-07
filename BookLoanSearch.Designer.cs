@@ -43,7 +43,9 @@
             // ListView
             // 
             ListView.Dock = DockStyle.Left;
+            ListView.FullRowSelect = true;
             ListView.Location = new Point(0, 0);
+            ListView.MultiSelect = false;
             ListView.Name = "ListView";
             ListView.Size = new Size(462, 490);
             ListView.TabIndex = 0;
@@ -136,6 +138,7 @@
             btnLoanReturn.TabIndex = 15;
             btnLoanReturn.Text = "Register Book Return";
             btnLoanReturn.UseVisualStyleBackColor = true;
+            btnLoanReturn.Click += btnLoanReturn_Click;
             // 
             // BookLoanSearch
             // 

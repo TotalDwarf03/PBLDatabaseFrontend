@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -288,6 +289,16 @@ namespace PBLDatabaseFrontend
             {
                 PopulateListview();
             }
+        }
+
+        private void btnLoanReturn_Click(object sender, EventArgs e)
+        {
+            int SelectedRow = ListView.SelectedIndices[0];
+            int SelectedLoanID = Convert.ToInt16(ListView.Items[SelectedRow]);
+
+            string UpdateSQL = $@"  UPDATE loan
+                                    SET datereturned = {DateTime.Today.ToString("yyyy-MM-dd")}
+                                    WHERE loanid = {SelectedLoanID}";
         }
     }
 }
