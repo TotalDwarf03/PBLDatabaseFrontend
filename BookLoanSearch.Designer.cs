@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookLoanSearch));
-            listView1 = new ListView();
+            ListView = new ListView();
             btnBack = new Button();
             cbTables = new ComboBox();
             lblTableSelect = new Label();
@@ -40,14 +40,15 @@
             btnLoanReturn = new Button();
             SuspendLayout();
             // 
-            // listView1
+            // ListView
             // 
-            listView1.Dock = DockStyle.Left;
-            listView1.Location = new Point(0, 0);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(462, 490);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
+            ListView.Dock = DockStyle.Left;
+            ListView.Location = new Point(0, 0);
+            ListView.Name = "ListView";
+            ListView.Size = new Size(462, 490);
+            ListView.TabIndex = 0;
+            ListView.UseCompatibleStateImageBehavior = false;
+            ListView.View = View.Details;
             // 
             // btnBack
             // 
@@ -112,6 +113,7 @@
             cbSearchItem.Name = "cbSearchItem";
             cbSearchItem.Size = new Size(281, 29);
             cbSearchItem.TabIndex = 12;
+            cbSearchItem.SelectedIndexChanged += cbSearchItem_SelectedIndexChanged;
             // 
             // btnClearSearch
             // 
@@ -148,20 +150,21 @@
             Controls.Add(btnBack);
             Controls.Add(cbTables);
             Controls.Add(lblTableSelect);
-            Controls.Add(listView1);
+            Controls.Add(ListView);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "BookLoanSearch";
             Text = "Book/Loan Search";
+            FormClosing += BookLoanSearch_FormClosing;
             Load += BookLoanSearch_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListView listView1;
+        private ListView ListView;
         private Button btnBack;
         private ComboBox cbTables;
         private Label lblTableSelect;
