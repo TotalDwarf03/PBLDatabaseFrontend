@@ -153,11 +153,13 @@ namespace PBLDatabaseFrontend
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
+            // Get current panel and disable it
             Panel oldPanel = (Panel)Controls.Find("pn" + CurrentTableList[CurrentTablePointer, 0].ToString(), true).SingleOrDefault();
             oldPanel.Enabled = false;
 
             ClearSelection();
 
+            // Decrement Current Table
             if (CurrentTablePointer != 0)
             {
                 CurrentTablePointer--;
@@ -167,22 +169,26 @@ namespace PBLDatabaseFrontend
                 CurrentTablePointer = (CurrentTableList.Length / 3) - 1;
             }
 
+            // Move Controls to new Panel
             pnTableSelect.Location = new Point(Convert.ToInt16(CurrentTableList[CurrentTablePointer, 1]), 9);
             lblTableName.Text = CurrentTableList[CurrentTablePointer, 0].ToString();
 
             pnTableControls.Location = new Point(Convert.ToInt16(CurrentTableList[CurrentTablePointer, 2]), 434);
 
+            // Enable new Panel
             Panel newPanel = (Panel)Controls.Find("pn" + CurrentTableList[CurrentTablePointer, 0].ToString(), true).SingleOrDefault();
             newPanel.Enabled = true;
         }
 
         private void btnRight_Click(object sender, EventArgs e)
         {
+            // Get current panel and disable it
             Panel oldPanel = (Panel)Controls.Find("pn" + CurrentTableList[CurrentTablePointer, 0].ToString(), true).SingleOrDefault();
             oldPanel.Enabled = false;
 
             ClearSelection();
 
+            // Increment Current Table
             if (CurrentTablePointer != (CurrentTableList.Length / 3) - 1)
             {
                 CurrentTablePointer++;
@@ -192,11 +198,13 @@ namespace PBLDatabaseFrontend
                 CurrentTablePointer = 0;
             }
 
+            // Move Controls to new Panel
             pnTableSelect.Location = new Point(Convert.ToInt16(CurrentTableList[CurrentTablePointer, 1]), 9);
             lblTableName.Text = CurrentTableList[CurrentTablePointer, 0].ToString();
 
             pnTableControls.Location = new Point(Convert.ToInt16(CurrentTableList[CurrentTablePointer, 2]), 434);
 
+            // Enable new Panel
             Panel newPanel = (Panel)Controls.Find("pn" + CurrentTableList[CurrentTablePointer, 0].ToString(), true).SingleOrDefault();
             newPanel.Enabled = true;
         }
@@ -212,6 +220,9 @@ namespace PBLDatabaseFrontend
 
             bool presenceCheckFailed = false;
 
+            // Switch Structure:
+            //      - Check if all fields are filled, if not fail presence check
+            //      - Create Insert Statement
             switch (CurrentTablePointer)
             {
                 // Author Panel Selected

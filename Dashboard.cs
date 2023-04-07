@@ -21,11 +21,13 @@ namespace PBLDatabaseFrontend
         {
             listView.Clear();
 
+            // For each column in the datatable, add it to the listview
             foreach (DataColumn col in dt.Columns)
             {
                 listView.Columns.Add(col.ColumnName);
             }
 
+            // For each row in the datatable, add it to the listview
             foreach (DataRow row in dt.Rows)
             {
                 ListViewItem listItem = new ListViewItem();
@@ -38,6 +40,7 @@ namespace PBLDatabaseFrontend
                 listView.Items.Add(listItem);
             }
 
+            // Size column headings based on the column's content
             listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 

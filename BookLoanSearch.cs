@@ -46,10 +46,12 @@ namespace PBLDatabaseFrontend
         /// </summary>
         private void UpdateFilters()
         {
+            // Empty Current dropdown options
             cbSearchFilter.Items.Clear();
 
             if (cbTables.SelectedItem == "Book")
             {
+                // Add each filter to the dropdown
                 for (int i = 0; i < BookFilters.Length / 3; i++)
                 {
                     cbSearchFilter.Items.Add(BookFilters[i, 0]);
@@ -59,6 +61,7 @@ namespace PBLDatabaseFrontend
             }
             else if (cbTables.SelectedItem == "Loan")
             {
+                // Add each filter to the dropdown
                 for (int i = 0; i < LoanFilters.Length / 3; i++)
                 {
                     cbSearchFilter.Items.Add(LoanFilters[i, 0]);
@@ -81,6 +84,9 @@ namespace PBLDatabaseFrontend
             int index = cbSearchFilter.SelectedIndex;
             string selectedTable = cbTables.SelectedItem.ToString();
 
+            // Calculate which columns are to be selected based on inputs
+            // Example of SelectStatement: authorid AS ID, fname || ' ' || sname AS DESC
+            // Needs to be dynamic as we do not know which column they are filtering on
             if (selectedTable == "Book")
             {
                 SelectStatement = $"{BookFilters[index, 1]}, {BookFilters[index, 2]}";
@@ -104,6 +110,8 @@ namespace PBLDatabaseFrontend
             int index = cbSearchFilter.SelectedIndex;
             string selectedTable = cbTables.SelectedItem.ToString();
 
+            // Gets which table the filter data is in
+            // i.e if filtering on authors, need to look in author table
             if (selectedTable == "Book")
             {
                 QueryTable = $"{BookFilters[index, 0].ToLower()}";
@@ -131,6 +139,7 @@ namespace PBLDatabaseFrontend
 
                 if (cbTables.SelectedItem == "Book")
                 {
+                    // Where clause example: a.authorid = 2
                     sqlQuery = $@"  SELECT 
                                         b.bookid AS BookID,
                                         b.title AS Title,
@@ -203,11 +212,13 @@ namespace PBLDatabaseFrontend
 
             ListView.Clear();
 
+            // for each column in the datatable, add it to the listview
             foreach (DataColumn col in dt.Columns)
             {
                 ListView.Columns.Add(col.ColumnName);
             }
 
+            // for each row in the datatable, add it to the listview
             foreach (DataRow row in dt.Rows)
             {
                 ListViewItem listItem = new ListViewItem();
@@ -220,9 +231,11 @@ namespace PBLDatabaseFrontend
                 ListView.Items.Add(listItem);
             }
 
+            // resize columns based on column content
             ListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
-            ListView.Columns[1].Width = 200;    // Resize book title column as too wide (always 2nd column)
+            // Resize book title column manually as content too wide (always 2nd column)
+            ListView.Columns[1].Width = 200;    
         }
 
         private void BookLoanSearch_Load(object sender, EventArgs e)
@@ -294,6 +307,7 @@ namespace PBLDatabaseFrontend
         {
             if (ListView.SelectedIndices.Count > 0)
             {
+                // Gets the selected row's LoanID
                 int SelectedRow = ListView.SelectedIndices[0];
                 string SelectedLoanID = ListView.Items[SelectedRow].Text;
 
