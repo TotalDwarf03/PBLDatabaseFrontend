@@ -14,6 +14,7 @@ namespace PBLDatabaseFrontend
     class SQLController
     {
         SQLiteConnection conn = new SQLiteConnection(@"Data Source=pontybrynlibrary.db");
+        SQLiteDataAdapter adapter;
 
         /// <summary>
         /// Executes Select Statements
@@ -22,7 +23,6 @@ namespace PBLDatabaseFrontend
         /// <returns>A data table containing the query results</returns>
         public DataTable RunQuery(string query)
         {
-            SQLiteDataAdapter adapter;
             DataTable dt = new DataTable();
 
             try
@@ -96,6 +96,20 @@ namespace PBLDatabaseFrontend
 
                 cmd.ExecuteNonQuery();
                 conn.Close();
+            }
+        }
+
+        /// <summary>
+        /// Applies the changes made in a given Data Table to the respective SQL Database Table
+        /// </summary>
+        /// <param name="dt">The Datatable to copy across</param>
+        public void CopyDTtoDB(DataTable dt)
+        {
+            conn.Open();
+
+            using(SQLiteCommandBuilder builder = new SQLiteCommandBuilder(adapter))
+            {
+                adapter.Update(dt);
             }
         }
     }

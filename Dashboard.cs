@@ -136,5 +136,14 @@ namespace PBLDatabaseFrontend
             frm.Show();
             this.Hide();
         }
+
+        private void btnVMTables_Click(object sender, EventArgs e)
+        {
+            ViewEditRecords frm = new ViewEditRecords();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
+        }
     }
 }

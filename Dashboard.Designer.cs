@@ -104,6 +104,7 @@
             btnVMTables.Text = "View/Modify Records";
             btnVMTables.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnVMTables.UseVisualStyleBackColor = false;
+            btnVMTables.Click += btnVMTables_Click;
             // 
             // pnSoftwareInfo
             // 
