@@ -89,7 +89,7 @@ namespace PBLDatabaseFrontend
                                             ON l.memberid = m.memberid
                                         WHERE 
                                             IFNULL(l.datereturned, 1) = 1
-                                            AND l.datedue BETWEEN DATE() AND DATE() + 3
+                                            AND l.datedue BETWEEN DATE() AND DATE(DATE(), '+3 days')
                                         ORDER BY l.datedue";
 
             DataTable dtBooksDueForReturn = controller.RunQuery(getBooksDueForReturn);

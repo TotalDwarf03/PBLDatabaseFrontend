@@ -239,8 +239,8 @@ namespace PBLDatabaseFrontend
                                         )
                                     VALUES
                                         (
-                                            {tbAuthorFname.Text},
-                                            {tbAuthorSname.Text}
+                                            '{tbAuthorFname.Text}',
+                                            '{tbAuthorSname.Text}'
                                         )
                                     ";
 
@@ -312,8 +312,8 @@ namespace PBLDatabaseFrontend
                                         )
                                     VALUES
                                         (
-                                            {LoanBookID},
-                                            {LoanMemberID},
+                                            '{LoanBookID}',
+                                            '{LoanMemberID}',
                                             '{DateTime.Today.ToString("yyyy-MM-dd")}',
                                             '{dtpDueDate.Value.ToString("yyyy-MM-dd")}'
                                         )
@@ -339,9 +339,9 @@ namespace PBLDatabaseFrontend
                                         )
                                     VALUES
                                         (
-                                            {tbBookTitle.Text},
-                                            {BookAuthorID},
-                                            {BookCategoryID}
+                                            '{tbBookTitle.Text}',
+                                            '{BookAuthorID}',
+                                            '{BookCategoryID}'
                                         )
                                     ";
 
@@ -360,7 +360,7 @@ namespace PBLDatabaseFrontend
                                         )
                                     VALUES
                                         (
-                                            {tbCategory.Text}
+                                            '{tbCategory.Text}'
                                         )
                                     ";
 
