@@ -51,7 +51,36 @@ namespace PBLDatabaseFrontend
         /// <param name="nonQuery">The table function statement (i.e update)</param>
         /// <param name="parameterMap">The list of parameters using the customer ParameterMap data class (Optional)</param>
         /// <returns>The number of records changed</returns>
-        public int RunNonQuery(string nonQuery, List<ParameterMap> parameterMap)
+        //public int RunNonQuery(string nonQuery, List<ParameterMap> parameterMap)
+        //{
+        //    int recordsChanged = 0;
+
+        //    try
+        //    {
+        //        SQLiteCommand cmd;
+
+        //        conn.Open();
+
+        //        cmd = conn.CreateCommand();
+        //        cmd.CommandText=nonQuery;
+
+        //        foreach(ParameterMap param in parameterMap)
+        //        {
+        //            cmd.Parameters.AddWithValue(param.parameterName, param.parameterValue);
+        //        }
+
+        //        recordsChanged = cmd.ExecuteNonQuery();
+        //    }
+        //    catch (SQLiteException ex)
+        //    {
+        //        Debug.WriteLine(ex.Message);
+        //    }
+
+        //    conn.Close();
+        //    return recordsChanged;
+        //}
+
+        public int RunNonQuery(string nonQuery)
         {
             int recordsChanged = 0;
 
@@ -62,12 +91,7 @@ namespace PBLDatabaseFrontend
                 conn.Open();
 
                 cmd = conn.CreateCommand();
-                cmd.CommandText=nonQuery;
-
-                foreach(ParameterMap param in parameterMap)
-                {
-                    cmd.Parameters.AddWithValue(param.parameterName, param.parameterValue);
-                }
+                cmd.CommandText = nonQuery;
 
                 recordsChanged = cmd.ExecuteNonQuery();
             }

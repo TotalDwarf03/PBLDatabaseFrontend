@@ -37,9 +37,9 @@ namespace PBLDatabaseFrontend
             }
         }
 
-        // { <Field Display Name>, <Database ID Field>, <Database Descriptor Field> }
-        string[,] BookFilters = { { "Author", "authorid AS ID", "fname || ' ' || sname AS DESC" }, { "Category", "categoryid AS ID", "type AS DESC" } };
-        string[,] LoanFilters = { { "Member", "memberid AS ID", "fname || ' ' || sname AS DESC" } };
+        // { <Field Display Name>, <Database ID Field>, <Database Descriptor Field>, <Database Table Alias> }
+        string[,] BookFilters = { { "Author", "authorid AS ID", "fname || ' ' || sname AS DESC", "a." }, { "Category", "categoryid AS ID", "type AS DESC", "c." } };
+        string[,] LoanFilters = { { "Member", "memberid AS ID", "fname || ' ' || sname AS DESC", "m." } };
 
         /// <summary>
         /// Populates cbSearchFilter with correct filters for table
@@ -141,7 +141,7 @@ namespace PBLDatabaseFrontend
                                         ON b.authorid = a.authorid
                                     JOIN category AS c
                                         ON b.categoryid = c.categoryid
-                                    WHERE {BookFilters[FilterIndex, 1].Replace(" AS ID", "")} = {cbSearchItem.SelectedValue.ToString()}";
+                                    WHERE {BookFilters[FilterIndex, 3] + BookFilters[FilterIndex, 1].Replace(" AS ID", "")} = {cbSearchItem.SelectedValue.ToString()}";
 
                     dt = controller.RunQuery(sqlQuery);
                 }
@@ -159,7 +159,7 @@ namespace PBLDatabaseFrontend
                                         ON l.bookid = b.bookid
                                     JOIN member AS m
                                         ON l.memberid = m.memberid
-                                    WHERE {LoanFilters[FilterIndex, 1].Replace(" AS ID", "")} = {cbSearchItem.SelectedValue.ToString()}";
+                                    WHERE {LoanFilters[FilterIndex, 3] + LoanFilters[FilterIndex, 1].Replace(" AS ID", "")} = {cbSearchItem.SelectedValue.ToString()}";
 
                     dt = controller.RunQuery(sqlQuery);
                 }
@@ -277,7 +277,6 @@ namespace PBLDatabaseFrontend
                 cbSearchItem.DataSource = dt;
                 cbSearchItem.ValueMember = "ID";
                 cbSearchItem.DisplayMember = "DESC";
-                //cbSearchItem.SelectedIndex = -1;
 
                 cbSearchItem.Enabled = true;
             }
@@ -293,12 +292,35 @@ namespace PBLDatabaseFrontend
 
         private void btnLoanReturn_Click(object sender, EventArgs e)
         {
-            int SelectedRow = ListView.SelectedIndices[0];
-            int SelectedLoanID = Convert.ToInt16(ListView.Items[SelectedRow]);
+            if (ListView.SelectedIndices.Count > 0)
+            {
+                int SelectedRow = ListView.SelectedIndices[0];
+                string SelectedLoanID = ListView.Items[SelectedRow].Text;
 
-            string UpdateSQL = $@"  UPDATE loan
-                                    SET datereturned = {DateTime.Today.ToString("yyyy-MM-dd")}
-                                    WHERE loanid = {SelectedLoanID}";
+                string currentDate = DateTime.Today.ToString("yyyy-MM-dd");
+
+                string UpdateSQL = $@"  UPDATE loan
+                                    SET datereturned = '{currentDate}'
+                                    WHERE loanid = {SelectedLoanID}
+                                        AND IFNULL(datereturned, 1) = 1";
+
+                int changed = controller.RunNonQuery(UpdateSQL);
+
+                if (changed > 0)
+                {
+                    MessageBox.Show("Book marked as returned.");
+                    PopulateListview();
+                }
+                else
+                {
+                    MessageBox.Show("Book already returned.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a loan to return.");
+            }
+            
         }
     }
 }

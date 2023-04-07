@@ -209,40 +209,40 @@ namespace PBLDatabaseFrontend
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             string InsertSQL = "SELECT 1";
-            List<ParameterMap> Parameters = new List<ParameterMap>();
+
+            bool presenceCheckFailed = false;
 
             switch (CurrentTablePointer)
             {
                 // Author Panel Selected
                 case 0:
-                    InsertSQL = @"  INSERT INTO author
+                    if (tbAuthorFname.Text == "" || tbAuthorSname.Text == "")
+                    {
+                        presenceCheckFailed = true;
+                    }
+
+                    InsertSQL = $@" INSERT INTO author
                                         (
                                             fname,
                                             sname
                                         )
                                     VALUES
                                         (
-                                            @authorFname,
-                                            @authorSname
+                                            {tbAuthorFname.Text},
+                                            {tbAuthorSname.Text}
                                         )
                                     ";
-
-                    ParameterMap AuthorForename = new ParameterMap();
-                    AuthorForename.parameterName = "authorFname";
-                    AuthorForename.parameterValue = tbAuthorFname.Text;
-
-                    ParameterMap AuthorSurname = new ParameterMap();
-                    AuthorSurname.parameterName = "authorSname";
-                    AuthorSurname.parameterValue = tbAuthorSname.Text;
-
-                    Parameters.Add(AuthorForename);
-                    Parameters.Add(AuthorSurname);
 
                     break;
 
                 // Member Panel Selected
                 case 1:
-                    InsertSQL = @"  INSERT INTO member
+                    if (tbMemberFname.Text == "" || tbMemberSname.Text == "" || tbMemberEmail.Text == "" || tbMemberStreet.Text == "" || tbMemberHouse.Text == "")
+                    {
+                        presenceCheckFailed = true;
+                    }
+
+                    InsertSQL = $@" INSERT INTO member
                                         (
                                             fname,
                                             sname,
@@ -252,39 +252,13 @@ namespace PBLDatabaseFrontend
                                         )
                                     VALUES
                                         (
-                                            @fname,
-                                            @sname,
-                                            @email,
-                                            @streetname,
-                                            @houseidentifier
+                                            {tbMemberFname.Text},
+                                            {tbMemberSname.Text},
+                                            {tbMemberEmail.Text},
+                                            {tbMemberStreet.Text},
+                                            {tbMemberHouse.Text}
                                         )
                                     ";
-
-                    ParameterMap MemberForename = new ParameterMap();
-                    MemberForename.parameterName = "fname";
-                    MemberForename.parameterValue = tbMemberFname.Text;
-
-                    ParameterMap MemberSurname = new ParameterMap();
-                    MemberSurname.parameterName = "sname";
-                    MemberSurname.parameterValue = tbMemberSname.Text;
-
-                    ParameterMap MemberEmail = new ParameterMap();
-                    MemberEmail.parameterName = "email";
-                    MemberEmail.parameterValue = tbMemberEmail.Text;
-
-                    ParameterMap MemberStreet = new ParameterMap();
-                    MemberStreet.parameterName = "streetname";
-                    MemberStreet.parameterValue = tbMemberStreet.Text;
-
-                    ParameterMap MemberHouse = new ParameterMap();
-                    MemberHouse.parameterName = "houseidentifier";
-                    MemberHouse.parameterValue = tbMemberHouse.Text;
-
-                    Parameters.Add(MemberForename);
-                    Parameters.Add(MemberSurname);
-                    Parameters.Add(MemberEmail);
-                    Parameters.Add(MemberStreet);
-                    Parameters.Add(MemberHouse);
 
                     break;
 
@@ -312,7 +286,15 @@ namespace PBLDatabaseFrontend
                         }
                     }
 
-                    InsertSQL = @"  INSERT INTO loan
+                    string LoanBookID = (cbLoanBookID.SelectedValue ?? "").ToString();
+                    string LoanMemberID = (cbLoanMemberID.SelectedValue ?? "").ToString();
+
+                    if (LoanBookID == "" || LoanMemberID == "")
+                    {
+                        presenceCheckFailed = true;
+                    }
+
+                    InsertSQL = $@" INSERT INTO loan
                                         (
                                             bookid,
                                             memberid,
@@ -321,39 +303,26 @@ namespace PBLDatabaseFrontend
                                         )
                                     VALUES
                                         (
-                                            @bookid,
-                                            @memberid,
-                                            @dateout,
-                                            @datedue
+                                            {LoanBookID},
+                                            {LoanMemberID},
+                                            {DateTime.Today.ToString("yyyy-MM-dd")},
+                                            {dtpDueDate.Value.ToString("yyyy-MM-dd")}
                                         )
                                     ";
-
-                    ParameterMap LoanBookID = new ParameterMap();
-                    LoanBookID.parameterName = "bookid";
-                    LoanBookID.parameterValue = cbLoanBookID.SelectedValue ?? "";    // if SelectedValue is null, return "" so it fails the presence check
-
-                    ParameterMap LoanMemberID = new ParameterMap();
-                    LoanMemberID.parameterName = "memberid";
-                    LoanMemberID.parameterValue = cbLoanMemberID.SelectedValue ?? "";
-
-                    ParameterMap LoanDateOut = new ParameterMap();
-                    LoanDateOut.parameterName = "dateout";
-                    LoanDateOut.parameterValue = DateTime.Today.ToString("yyyy-MM-dd");
-
-                    ParameterMap LoanDateDue = new ParameterMap();
-                    LoanDateDue.parameterName = "datedue";
-                    LoanDateDue.parameterValue = dtpDueDate.Value.ToString("yyyy-MM-dd");
-
-                    Parameters.Add(LoanBookID);
-                    Parameters.Add(LoanMemberID);
-                    Parameters.Add(LoanDateOut);
-                    Parameters.Add(LoanDateDue);
 
                     break;
 
                 // Book Panel Selected
                 case 3:
-                    InsertSQL = @"  INSERT INTO book
+                    string BookAuthorID = (cbBookAuthorID.SelectedValue ?? "").ToString();
+                    string BookCategoryID = (cbBookCategoryID.SelectedValue ?? "").ToString();
+
+                    if (BookAuthorID == "" || BookCategoryID == "")
+                    {
+                        presenceCheckFailed = true;
+                    }
+
+                    InsertSQL = $@" INSERT INTO book
                                         (
                                             title,
                                             authorid,
@@ -361,59 +330,32 @@ namespace PBLDatabaseFrontend
                                         )
                                     VALUES
                                         (
-                                            @title,
-                                            @authorid,
-                                            @categoryid
+                                            {tbBookTitle.Text},
+                                            {BookAuthorID},
+                                            {BookCategoryID}
                                         )
                                     ";
-
-                    ParameterMap BookTitle = new ParameterMap();
-                    BookTitle.parameterName = "title";
-                    BookTitle.parameterValue = tbBookTitle.Text;
-
-                    ParameterMap BookAuthorID = new ParameterMap();
-                    BookAuthorID.parameterName = "authorid";
-                    BookAuthorID.parameterValue = cbBookAuthorID.SelectedValue ?? "";
-
-                    ParameterMap BookCategoryID = new ParameterMap();
-                    BookCategoryID.parameterName = "categoryid";
-                    BookCategoryID.parameterValue = cbBookCategoryID.SelectedValue ?? "";
-
-                    Parameters.Add(BookTitle);
-                    Parameters.Add(BookAuthorID);
-                    Parameters.Add(BookCategoryID);
 
                     break;
 
                 // Catagory Panel Selected
                 case 4:
-                    InsertSQL = @"  INSERT INTO category
+                    if (tbCategory.Text == "")
+                    {
+                        presenceCheckFailed = true;
+                    }
+
+                    InsertSQL = $@" INSERT INTO category
                                         (
                                             type
                                         )
                                     VALUES
                                         (
-                                            @type
+                                            {tbCategory.Text}
                                         )
                                     ";
 
-                    ParameterMap CategoryType = new ParameterMap();
-                    CategoryType.parameterName = "type";
-                    CategoryType.parameterValue = tbCategory.Text;
-
-                    Parameters.Add(CategoryType);
-
                     break;
-            }
-
-            bool presenceCheckFailed = false;
-
-            foreach (ParameterMap param in Parameters)
-            {
-                if (param.parameterValue == "")
-                {
-                    presenceCheckFailed = true;
-                }
             }
 
             if (presenceCheckFailed)
@@ -422,7 +364,7 @@ namespace PBLDatabaseFrontend
             }
             else
             {
-                int changed = controller.RunNonQuery(InsertSQL, Parameters);
+                int changed = controller.RunNonQuery(InsertSQL);
 
                 if (changed > 0)
                 {
