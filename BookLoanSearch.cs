@@ -132,10 +132,12 @@ namespace PBLDatabaseFrontend
             DataTable dt = new DataTable();
 
             // If Has a Filter
-            if (cbSearchFilter.SelectedIndex != -1)
+            if (cbSearchItem.SelectedIndex != -1)
             {
                 int FilterIndex = cbSearchFilter.SelectedIndex;
                 string sqlQuery = "";
+
+                string SearchItem = cbSearchItem.SelectedValue.ToString();
 
                 if (cbTables.SelectedItem == "Book")
                 {
@@ -150,7 +152,7 @@ namespace PBLDatabaseFrontend
                                         ON b.authorid = a.authorid
                                     JOIN category AS c
                                         ON b.categoryid = c.categoryid
-                                    WHERE {BookFilters[FilterIndex, 3] + BookFilters[FilterIndex, 1].Replace(" AS ID", "")} = {cbSearchItem.SelectedValue.ToString()}";
+                                    WHERE {BookFilters[FilterIndex, 3] + BookFilters[FilterIndex, 1].Replace(" AS ID", "")} = {SearchItem}";
 
                     dt = controller.RunQuery(sqlQuery);
                 }
@@ -168,7 +170,7 @@ namespace PBLDatabaseFrontend
                                         ON l.bookid = b.bookid
                                     JOIN member AS m
                                         ON l.memberid = m.memberid
-                                    WHERE {LoanFilters[FilterIndex, 3] + LoanFilters[FilterIndex, 1].Replace(" AS ID", "")} = {cbSearchItem.SelectedValue.ToString()}";
+                                    WHERE {LoanFilters[FilterIndex, 3] + LoanFilters[FilterIndex, 1].Replace(" AS ID", "")} = {SearchItem}";
 
                     dt = controller.RunQuery(sqlQuery);
                 }
@@ -261,9 +263,13 @@ namespace PBLDatabaseFrontend
             cbSearchFilter.SelectedIndex = -1;
             cbSearchItem.SelectedIndex = -1;
             cbSearchItem.Enabled = false;
+            cbSearchItemPopulated = false;
 
             PopulateListview();
         }
+
+        // Variable to show if cbSearchItem is Populated (cbSearchItem called when setting up combobox)
+        bool cbSearchItemPopulated = false;
 
         private void cbTables_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -290,14 +296,16 @@ namespace PBLDatabaseFrontend
                 cbSearchItem.DataSource = dt;
                 cbSearchItem.ValueMember = "ID";
                 cbSearchItem.DisplayMember = "DESC";
+                cbSearchItem.SelectedIndex = -1;
 
                 cbSearchItem.Enabled = true;
+                cbSearchItemPopulated = true;
             }
         }
 
         private void cbSearchItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbSearchItem.SelectedIndex != -1)
+            if (cbSearchItemPopulated)
             {
                 PopulateListview();
             }
