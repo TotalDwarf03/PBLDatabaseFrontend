@@ -75,6 +75,7 @@
             btnSearch.Text = "Book/Loan Search";
             btnSearch.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
             // btnInsNewRecord
             // 

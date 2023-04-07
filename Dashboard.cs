@@ -145,5 +145,14 @@ namespace PBLDatabaseFrontend
             frm.Show();
             this.Hide();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            BookLoanSearch frm = new BookLoanSearch();
+            frm.Owner = this;
+
+            frm.Show();
+            this.Hide();
+        }
     }
 }
