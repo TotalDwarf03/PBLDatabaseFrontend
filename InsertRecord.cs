@@ -263,21 +263,19 @@ namespace PBLDatabaseFrontend
                                         )
                                     VALUES
                                         (
-                                            {tbMemberFname.Text},
-                                            {tbMemberSname.Text},
-                                            {tbMemberEmail.Text},
-                                            {tbMemberStreet.Text},
-                                            {tbMemberHouse.Text}
+                                            '{tbMemberFname.Text}',
+                                            '{tbMemberSname.Text}',
+                                            '{tbMemberEmail.Text}',
+                                            '{tbMemberStreet.Text}',
+                                            '{tbMemberHouse.Text}'
                                         )
                                     ";
-
                     break;
 
                 // Loan Panel Selected
                 case 2:
                     // Check if Member already has 3 loans
                     int MemberID = Convert.ToInt16(cbLoanMemberID.SelectedValue);
-                    Debug.WriteLine(MemberID);
                     string LoanCount = @$"  SELECT
                                                 COUNT(l.loanid) AS NoOfLoans
                                             FROM loan AS l
@@ -316,8 +314,8 @@ namespace PBLDatabaseFrontend
                                         (
                                             {LoanBookID},
                                             {LoanMemberID},
-                                            {DateTime.Today.ToString("yyyy-MM-dd")},
-                                            {dtpDueDate.Value.ToString("yyyy-MM-dd")}
+                                            '{DateTime.Today.ToString("yyyy-MM-dd")}',
+                                            '{dtpDueDate.Value.ToString("yyyy-MM-dd")}'
                                         )
                                     ";
 
