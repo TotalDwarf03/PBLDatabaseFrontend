@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
+using System.Diagnostics;
 
 namespace PBLDatabaseFrontend
 {
@@ -24,6 +17,20 @@ namespace PBLDatabaseFrontend
         string[,] CurrentTableList = { { "Author", "0", "34" }, { "Member", "219", "253" }, { "Loan", "438", "472" }, { "Book", "657", "691" }, { "Category", "876", "910" }, };
         int CurrentTablePointer = 2;
 
+        /// <summary>
+        /// Shows the Dashboard Screen and Closes any other open screens
+        /// </summary>
+        private void ReturntoDashboard()
+        {
+            this.Owner.Show();
+
+            Form[] OwnedForms = this.Owner.OwnedForms;
+
+            foreach (Form form in OwnedForms)
+            {
+                form.Dispose();
+            }
+        }
 
         /// <summary>
         /// Clears all entered values for the current selected table
@@ -51,7 +58,7 @@ namespace PBLDatabaseFrontend
                 case 2:
                     cbLoanBookID.SelectedIndex = -1;
                     cbLoanMemberID.SelectedIndex = -1;
-                    tbLoanDateDue.Clear();
+                    dtpDueDate.Value = DateTime.Today.AddDays(3);
                     break;
 
                 // Book Panel Selected
@@ -68,10 +75,11 @@ namespace PBLDatabaseFrontend
             }
         }
 
-        private void InsertRecord_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Populates the Insert Record Combo Boxes
+        /// </summary>
+        private void PopulateScreenData()
         {
-            // Populate Book, Member, Author and Category Drop downs
-
             // Author
             string getAuthors = @"  SELECT
                                         authorid,
@@ -125,16 +133,22 @@ namespace PBLDatabaseFrontend
             cbLoanMemberID.SelectedIndex = -1;
         }
 
+        private void InsertRecord_Load(object sender, EventArgs e)
+        {
+            // Populate Book, Member, Author and Category Drop downs
+            PopulateScreenData();
+
+            // Setup Date Picker for Loan Due Date
+            dtpDueDate.MinDate = DateTime.Today;
+            dtpDueDate.CustomFormat = "yyyy-MM-dd";
+            dtpDueDate.Format = DateTimePickerFormat.Custom;
+
+            dtpDueDate.Value = DateTime.Today.AddDays(3);
+        }
+
         private void InsertRecord_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Owner.Show();
-
-            Form[] OwnedForms = this.Owner.OwnedForms;
-
-            foreach (Form form in OwnedForms)
-            {
-                form.Dispose();
-            }
+            ReturntoDashboard();
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
@@ -200,7 +214,7 @@ namespace PBLDatabaseFrontend
             switch (CurrentTablePointer)
             {
                 // Author Panel Selected
-                case 0:                    
+                case 0:
                     InsertSQL = @"  INSERT INTO author
                                         (
                                             fname,
@@ -266,16 +280,38 @@ namespace PBLDatabaseFrontend
                     MemberHouse.parameterName = "houseidentifier";
                     MemberHouse.parameterValue = tbMemberHouse.Text;
 
-                    Parameters.Add(MemberForename); 
-                    Parameters.Add(MemberSurname); 
-                    Parameters.Add(MemberEmail); 
-                    Parameters.Add(MemberStreet); 
+                    Parameters.Add(MemberForename);
+                    Parameters.Add(MemberSurname);
+                    Parameters.Add(MemberEmail);
+                    Parameters.Add(MemberStreet);
                     Parameters.Add(MemberHouse);
 
                     break;
 
                 // Loan Panel Selected
                 case 2:
+                    // Check if Member already has 3 loans
+                    int MemberID = Convert.ToInt16(cbLoanMemberID.SelectedValue);
+                    Debug.WriteLine(MemberID);
+                    string LoanCount = @$"  SELECT
+                                                COUNT(l.loanid) AS NoOfLoans
+                                            FROM loan AS l
+                                            WHERE l.memberid = {MemberID}
+                                                AND IFNULL(l.datereturned, 1) = 1";
+
+                    DataTable MemberLoans = controller.RunQuery(LoanCount);
+                    DataRow row = MemberLoans.Rows[0];
+                    int NoOfLoans = Convert.ToInt16(row[0]);
+
+                    if (NoOfLoans >= 3)
+                    {
+                        DialogResult result = MessageBox.Show($"This Person already has {NoOfLoans} Loans. Do you want to continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.No)
+                        {
+                            break;
+                        }
+                    }
+
                     InsertSQL = @"  INSERT INTO loan
                                         (
                                             bookid,
@@ -294,11 +330,11 @@ namespace PBLDatabaseFrontend
 
                     ParameterMap LoanBookID = new ParameterMap();
                     LoanBookID.parameterName = "bookid";
-                    LoanBookID.parameterValue = cbLoanBookID.SelectedValue.ToString();
+                    LoanBookID.parameterValue = cbLoanBookID.SelectedValue ?? "";    // if SelectedValue is null, return "" so it fails the presence check
 
                     ParameterMap LoanMemberID = new ParameterMap();
                     LoanMemberID.parameterName = "memberid";
-                    LoanMemberID.parameterValue = cbLoanMemberID.SelectedValue.ToString();
+                    LoanMemberID.parameterValue = cbLoanMemberID.SelectedValue ?? "";
 
                     ParameterMap LoanDateOut = new ParameterMap();
                     LoanDateOut.parameterName = "dateout";
@@ -306,7 +342,7 @@ namespace PBLDatabaseFrontend
 
                     ParameterMap LoanDateDue = new ParameterMap();
                     LoanDateDue.parameterName = "datedue";
-                    LoanDateDue.parameterValue = tbLoanDateDue.Text;
+                    LoanDateDue.parameterValue = dtpDueDate.Value.ToString("yyyy-MM-dd");
 
                     Parameters.Add(LoanBookID);
                     Parameters.Add(LoanMemberID);
@@ -337,11 +373,11 @@ namespace PBLDatabaseFrontend
 
                     ParameterMap BookAuthorID = new ParameterMap();
                     BookAuthorID.parameterName = "authorid";
-                    BookAuthorID.parameterValue = cbBookAuthorID.SelectedValue.ToString();
+                    BookAuthorID.parameterValue = cbBookAuthorID.SelectedValue ?? "";
 
                     ParameterMap BookCategoryID = new ParameterMap();
                     BookCategoryID.parameterName = "categoryid";
-                    BookCategoryID.parameterValue = cbBookCategoryID.SelectedValue.ToString();
+                    BookCategoryID.parameterValue = cbBookCategoryID.SelectedValue ?? "";
 
                     Parameters.Add(BookTitle);
                     Parameters.Add(BookAuthorID);
@@ -370,15 +406,39 @@ namespace PBLDatabaseFrontend
                     break;
             }
 
-            int changed = controller.RunNonQuery(InsertSQL, Parameters);
+            bool presenceCheckFailed = false;
 
-            if (changed > 0)
+            foreach (ParameterMap param in Parameters)
             {
-                MessageBox.Show("Record Added Successfully!");
+                if (param.parameterValue == "")
+                {
+                    presenceCheckFailed = true;
+                }
             }
 
-            ClearSelection();
-            InsertRecord_Load(sender, EventArgs.Empty);
+            if (presenceCheckFailed)
+            {
+                MessageBox.Show("Please make sure all fields are filled.");
+            }
+            else
+            {
+                int changed = controller.RunNonQuery(InsertSQL, Parameters);
+
+                if (changed > 0)
+                {
+                    MessageBox.Show("Record Added Successfully!");
+                }
+
+                ClearSelection();
+
+                // Update Drop Downs
+                PopulateScreenData();
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            ReturntoDashboard();
         }
     }
 }

@@ -68,7 +68,7 @@
             btnSearch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnSearch.Image = Properties.Resources.SearchIcon;
             btnSearch.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSearch.Location = new Point(7, 153);
+            btnSearch.Location = new Point(7, 80);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(220, 58);
             btnSearch.TabIndex = 2;
@@ -82,7 +82,7 @@
             btnInsNewRecord.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnInsNewRecord.Image = Properties.Resources.NewRecordIcon;
             btnInsNewRecord.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInsNewRecord.Location = new Point(7, 8);
+            btnInsNewRecord.Location = new Point(7, 5);
             btnInsNewRecord.Name = "btnInsNewRecord";
             btnInsNewRecord.Size = new Size(220, 58);
             btnInsNewRecord.TabIndex = 1;
@@ -97,7 +97,7 @@
             btnVMTables.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnVMTables.Image = Properties.Resources.View_ModifyIcon;
             btnVMTables.ImageAlign = ContentAlignment.MiddleLeft;
-            btnVMTables.Location = new Point(7, 80);
+            btnVMTables.Location = new Point(9, 155);
             btnVMTables.Name = "btnVMTables";
             btnVMTables.Size = new Size(220, 58);
             btnVMTables.TabIndex = 0;
@@ -258,6 +258,7 @@
             Name = "Dashboard";
             Text = "Pontybryn Library - Dashboard";
             Load += Dashboard_Load;
+            VisibleChanged += Dashboard_VisibleChanged;
             pnNavigation.ResumeLayout(false);
             pnSoftwareInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

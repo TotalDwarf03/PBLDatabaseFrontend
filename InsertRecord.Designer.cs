@@ -46,9 +46,9 @@
             lblMemberSname = new Label();
             lblMemberFname = new Label();
             pnLoan = new Panel();
+            dtpDueDate = new DateTimePicker();
             cbLoanMemberID = new ComboBox();
             lblLoanBookID = new Label();
-            tbLoanDateDue = new TextBox();
             lblLoanMemberID = new Label();
             cbLoanBookID = new ComboBox();
             lblLoanDateDue = new Label();
@@ -74,6 +74,7 @@
             pnTableControls = new Panel();
             btnClear = new Button();
             btnSubmit = new Button();
+            btnBack = new Button();
             pnAuthor.SuspendLayout();
             pnMember.SuspendLayout();
             pnLoan.SuspendLayout();
@@ -247,9 +248,9 @@
             // 
             pnLoan.BackColor = SystemColors.Window;
             pnLoan.BorderStyle = BorderStyle.FixedSingle;
+            pnLoan.Controls.Add(dtpDueDate);
             pnLoan.Controls.Add(cbLoanMemberID);
             pnLoan.Controls.Add(lblLoanBookID);
-            pnLoan.Controls.Add(tbLoanDateDue);
             pnLoan.Controls.Add(lblLoanMemberID);
             pnLoan.Controls.Add(cbLoanBookID);
             pnLoan.Controls.Add(lblLoanDateDue);
@@ -257,6 +258,15 @@
             pnLoan.Name = "pnLoan";
             pnLoan.Size = new Size(200, 358);
             pnLoan.TabIndex = 4;
+            // 
+            // dtpDueDate
+            // 
+            dtpDueDate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDueDate.Location = new Point(3, 135);
+            dtpDueDate.Name = "dtpDueDate";
+            dtpDueDate.Size = new Size(192, 29);
+            dtpDueDate.TabIndex = 18;
+            dtpDueDate.Value = new DateTime(2023, 4, 7, 13, 24, 3, 0);
             // 
             // cbLoanMemberID
             // 
@@ -267,7 +277,6 @@
             cbLoanMemberID.Location = new Point(3, 78);
             cbLoanMemberID.Name = "cbLoanMemberID";
             cbLoanMemberID.Size = new Size(192, 29);
-            cbLoanMemberID.Sorted = true;
             cbLoanMemberID.TabIndex = 13;
             // 
             // lblLoanBookID
@@ -279,14 +288,6 @@
             lblLoanBookID.Size = new Size(54, 21);
             lblLoanBookID.TabIndex = 10;
             lblLoanBookID.Text = "Book:";
-            // 
-            // tbLoanDateDue
-            // 
-            tbLoanDateDue.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tbLoanDateDue.Location = new Point(3, 135);
-            tbLoanDateDue.Name = "tbLoanDateDue";
-            tbLoanDateDue.Size = new Size(192, 29);
-            tbLoanDateDue.TabIndex = 17;
             // 
             // lblLoanMemberID
             // 
@@ -307,7 +308,6 @@
             cbLoanBookID.Location = new Point(3, 23);
             cbLoanBookID.Name = "cbLoanBookID";
             cbLoanBookID.Size = new Size(192, 29);
-            cbLoanBookID.Sorted = true;
             cbLoanBookID.TabIndex = 11;
             // 
             // lblLoanDateDue
@@ -345,7 +345,6 @@
             cbBookCategoryID.Location = new Point(3, 134);
             cbBookCategoryID.Name = "cbBookCategoryID";
             cbBookCategoryID.Size = new Size(192, 29);
-            cbBookCategoryID.Sorted = true;
             cbBookCategoryID.TabIndex = 9;
             // 
             // lblBookTitle
@@ -385,7 +384,6 @@
             cbBookAuthorID.Location = new Point(3, 79);
             cbBookAuthorID.Name = "cbBookAuthorID";
             cbBookAuthorID.Size = new Size(192, 29);
-            cbBookAuthorID.Sorted = true;
             cbBookAuthorID.TabIndex = 7;
             // 
             // lblBookAuthorID
@@ -559,11 +557,23 @@
             btnSubmit.UseVisualStyleBackColor = true;
             btnSubmit.Click += btnSubmit_Click;
             // 
+            // btnBack
+            // 
+            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBack.Location = new Point(991, 492);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(98, 30);
+            btnBack.TabIndex = 2;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
+            // 
             // InsertRecord
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1102, 490);
+            ClientSize = new Size(1102, 534);
+            Controls.Add(btnBack);
             Controls.Add(pnTableControls);
             Controls.Add(pnTableSelect);
             Controls.Add(lblLoan);
@@ -628,7 +638,6 @@
         private Label lblMemberFname;
         private ComboBox cbLoanMemberID;
         private Label lblLoanBookID;
-        private TextBox tbLoanDateDue;
         private Label lblLoanMemberID;
         private ComboBox cbLoanBookID;
         private Label lblLoanDateDue;
@@ -647,5 +656,7 @@
         private Label lblCategoryTitle;
         private Panel pnTableControls;
         private Button btnSubmit;
+        private Button btnBack;
+        private DateTimePicker dtpDueDate;
     }
 }

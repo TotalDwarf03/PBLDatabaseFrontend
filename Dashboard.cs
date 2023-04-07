@@ -19,6 +19,8 @@ namespace PBLDatabaseFrontend
         /// <param name="dt">The data to be put into the listview</param>
         private void GenerateListview(ListView listView, DataTable dt)
         {
+            listView.Clear();
+
             foreach (DataColumn col in dt.Columns)
             {
                 listView.Columns.Add(col.ColumnName);
@@ -39,10 +41,8 @@ namespace PBLDatabaseFrontend
             listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        private void Dashboard_Load(object sender, EventArgs e)
+        private void PopulateScreenData()
         {
-            // Populate Dashboard Listboxes
-
             // Most Popular Books
             string getMostPopularBooks = @" SELECT
                                             COUNT(l.loanid) AS Loans,
@@ -114,6 +114,18 @@ namespace PBLDatabaseFrontend
             GenerateListview(lvOverdueBooks, dtOverdueBooks);
 
             lblOverdueBooks.Text = ($"Overdue Books: {dtOverdueBooks.Rows.Count}");
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            // Populate Dashboard Listboxes
+            PopulateScreenData();
+        }
+
+        private void Dashboard_VisibleChanged(object sender, EventArgs e)
+        {
+            // Refresh Dashboard Data
+            PopulateScreenData();
         }
 
         private void btnInsNewRecord_Click(object sender, EventArgs e)
